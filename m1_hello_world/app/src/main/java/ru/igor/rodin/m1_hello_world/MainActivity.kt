@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
     private val binding
         get() = _binding ?: throw IllegalStateException("")
 
-    private var freeSeats = 0
+    private var occupiedPlaces = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,8 +19,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         with(binding) {
-            seatsCount.text = freeSeats.toString()
-            minusBtn.isEnabled = freeSeats > 0
+            seatsCount.text = occupiedPlaces.toString()
+            minusBtn.isEnabled = occupiedPlaces > 0
 
             addBtn.setOnClickListener {
                 addPassenger()
@@ -37,21 +37,31 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun reset() {
-        freeSeats = 0
+        occupiedPlaces = 0
         binding.resetBtn.visibility = View.GONE
-        updateInfo(freeSeats)
+        updateInfo(occupiedPlaces)
     }
 
+    /**
+     * Remove passenger from the bus
+     */
     private fun removePassenger() {
-        freeSeats--
-        updateInfo(freeSeats)
+        occupiedPlaces--
+        updateInfo(occupiedPlaces)
     }
 
+    /**
+     * Add passenger to the bus
+     */
     private fun addPassenger() {
-        freeSeats++
-        updateInfo(freeSeats)
+        occupiedPlaces++
+        updateInfo(occupiedPlaces)
     }
 
+
+    /**
+     * Updates availability information
+     */
     private fun updateInfo(freeSeats: Int) {
         with(binding) {
             resetBtn.visibility = if(freeSeats > maxSeats) View.VISIBLE else View.GONE
