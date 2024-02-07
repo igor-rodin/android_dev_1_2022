@@ -9,7 +9,7 @@ import java.lang.IllegalStateException
 class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding
-        get() = _binding ?: throw IllegalStateException("")
+        get() = _binding ?: throw IllegalStateException(getString(R.string.exeption_binding_can_t_be_null))
 
     private var occupiedPlaces = 0
 
@@ -62,20 +62,20 @@ class MainActivity : AppCompatActivity() {
     /**
      * Updates availability information
      */
-    private fun updateInfo(freeSeats: Int) {
+    private fun updateInfo(occupiedPlaces: Int) {
         with(binding) {
-            resetBtn.visibility = if(freeSeats > maxSeats) View.VISIBLE else View.GONE
-            minusBtn.isEnabled = freeSeats > 0
-            addBtn.isEnabled = freeSeats <= maxSeats
-            seatsCount.text = freeSeats.toString()
+            resetBtn.visibility = if(occupiedPlaces > maxSeats) View.VISIBLE else View.GONE
+            minusBtn.isEnabled = occupiedPlaces > 0
+            addBtn.isEnabled = occupiedPlaces <= maxSeats
+            seatsCount.text = occupiedPlaces.toString()
             when {
-                freeSeats == 0 -> {
+                occupiedPlaces == 0 -> {
                     infoMessage.text = getString(R.string.seats_free_message)
                     infoMessage.setTextColor(getColor(R.color.free_seats))
                 }
 
-                freeSeats <= maxSeats -> {
-                    infoMessage.text = getString(R.string.seats_count_message, maxSeats - freeSeats)
+                occupiedPlaces <= maxSeats -> {
+                    infoMessage.text = getString(R.string.seats_count_message, maxSeats - occupiedPlaces)
                     infoMessage.setTextColor(getColor(R.color.regular_seats))
                 }
 
