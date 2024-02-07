@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">m1_hello_world</string>
+    <string name="seats_free_message">Все места свободны</string>
+    <string name="seats_count_message">Осталось мест: %1$d</string>
+    <string name="no_seats_message">Пассажиров слишком много!</string>
+    <string name="seats_count">1%d</string>
+    <string name="button_reset">Сброс</string>
+    <string name="add_btn_description">Добавить одного пассажира</string>
+    <string name="remove_btn_description">Высадить одного пассажира</string>
+</resources>
