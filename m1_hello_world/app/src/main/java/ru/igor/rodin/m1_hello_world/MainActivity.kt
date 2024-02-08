@@ -6,10 +6,12 @@ import android.view.View
 import ru.igor.rodin.m1_hello_world.databinding.ActivityMainBinding
 import java.lang.IllegalStateException
 
+private const val maxSeats = 49
+
 class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding
-        get() = _binding ?: throw IllegalStateException(getString(R.string.exeption_binding_can_t_be_null))
+        get() = _binding!!
 
     private var occupiedPlaces = 0
 
@@ -64,7 +66,7 @@ class MainActivity : AppCompatActivity() {
      */
     private fun updateInfo(occupiedPlaces: Int) {
         with(binding) {
-            resetBtn.visibility = if(occupiedPlaces > maxSeats) View.VISIBLE else View.GONE
+            resetBtn.visibility = if (occupiedPlaces > maxSeats) View.VISIBLE else View.GONE
             minusBtn.isEnabled = occupiedPlaces > 0
             addBtn.isEnabled = occupiedPlaces <= maxSeats
             seatsCount.text = occupiedPlaces.toString()
@@ -75,7 +77,8 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 occupiedPlaces <= maxSeats -> {
-                    infoMessage.text = getString(R.string.seats_count_message, maxSeats - occupiedPlaces)
+                    infoMessage.text =
+                        getString(R.string.seats_count_message, maxSeats - occupiedPlaces)
                     infoMessage.setTextColor(getColor(R.color.regular_seats))
                 }
 
@@ -88,9 +91,5 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-    }
-
-    companion object {
-        private const val maxSeats = 49
     }
 }
