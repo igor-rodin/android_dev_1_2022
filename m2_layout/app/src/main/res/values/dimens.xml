@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="custom_view_pad">16dp</dimen>
+    <dimen name="black_square_size">100dp</dimen>
+</resources>

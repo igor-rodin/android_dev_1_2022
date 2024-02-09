@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">m2_layout</string>
+    <string name="top_line_text">Верхняя строчка, настроенная из кода</string>
+    <string name="bottom_line_text">Нижняя строчка, настроенная из кода</string>
 </resources>

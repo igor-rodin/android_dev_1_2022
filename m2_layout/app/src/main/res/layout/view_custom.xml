@@ -4,31 +4,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="@dimen/custom_view_pad">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/custom_view_pad"
         android:orientation="horizontal">
 
         <FrameLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/black_square_size"
+            android:layout_height="@dimen/black_square_size"
             android:background="@android:color/black" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="@dimen/custom_view_pad">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/top_line"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:textSize="20sp"
+                android:layout_marginBottom="@dimen/custom_view_pad"
+                android:textSize="18sp"
                 android:ellipsize="end"
                 android:lines="1"
                 tools:text="@tools:sample/lorem/random" />
@@ -37,7 +37,7 @@
                 android:id="@+id/bottom_line"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:ellipsize="end"
                 android:lines="1"
                 tools:text="@tools:sample/lorem/random" />
