@@ -6,13 +6,93 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/begin_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/base_margin" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/base_margin" />
+
+    <ImageView
+        android:id="@+id/poster"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/poster_bee"
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/begin_content"
+        app:layout_constraintEnd_toEndOf="@id/end_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/poster_description" />
+
     <TextView
+        android:id="@+id/artist_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="@dimen/base_margin"
+        android:text="@string/artist_name"
+        style="@style/PosterText"
+        app:layout_constraintStart_toStartOf="@id/begin_content"
+        app:layout_constraintEnd_toEndOf="@id/end_content"
+        app:layout_constraintTop_toBottomOf="@id/play"
+        tools:text="@tools:sample/full_names" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/play_title"
+        style="@style/PosterText"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintStart_toStartOf="@id/begin_content"
+        app:layout_constraintEnd_toEndOf="@id/end_content"
+        app:layout_constraintTop_toBottomOf="@id/artist_name"
+        tools:text="@tools:sample/lorem" />
+
+    <ImageButton
+        android:id="@+id/play_previous"
+        android:layout_width="@dimen/small_btn_size"
+        android:layout_height="@dimen/small_btn_size"
+        android:src="@drawable/skip_previous"
+        style="@style/ActionButton"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintTop_toTopOf="@id/play"
+        app:layout_constraintBottom_toBottomOf="@id/play"
+        app:layout_constraintStart_toStartOf="@id/begin_content"
+        app:layout_constraintEnd_toStartOf="@id/play"
+        android:contentDescription="@string/previous_content_description" />
+
+    <ImageButton
+        android:id="@+id/play"
+        android:layout_width="@dimen/big_btn_size"
+        android:layout_height="@dimen/big_btn_size"
+        android:layout_marginStart="@dimen/base_margin"
+        android:layout_marginEnd="@dimen/base_margin"
+        android:src="@drawable/play_circle"
+        style="@style/ActionButton"
+        app:layout_constraintTop_toBottomOf="@id/poster"
+        app:layout_constraintStart_toEndOf="@id/play_previous"
+        app:layout_constraintEnd_toStartOf="@id/play_next"
+        android:contentDescription="@string/play_content_description" />
+
+    <ImageButton
+        android:id="@+id/play_next"
+        android:layout_width="@dimen/small_btn_size"
+        android:layout_height="@dimen/small_btn_size"
+        android:src="@drawable/skip_next"
+        style="@style/ActionButton"
+        app:layout_constraintTop_toTopOf="@id/play"
+        app:layout_constraintBottom_toBottomOf="@id/play"
+        app:layout_constraintStart_toEndOf="@id/play"
+        app:layout_constraintEnd_toEndOf="@id/end_content"
+        android:contentDescription="@string/next_content_description" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">m3_constraint</string>
+    <string name="poster_description">Albom poster</string>
+    <string name="artist_name">Исполнитель</string>
+    <string name="play_title">Наименование композиции</string>
+    <string name="play_content_description">Play</string>
+    <string name="previous_content_description">Play previous</string>
+    <string name="next_content_description">Play next</string>
 </resources>
