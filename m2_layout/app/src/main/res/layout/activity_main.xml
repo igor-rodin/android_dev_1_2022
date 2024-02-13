@@ -7,8 +7,10 @@
     tools:context=".MainActivity">
 
     <ru.igor.rodin.m2_layout.CustomView
+        android:id="@+id/custom_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/custom_view"/>
+        app:topLineText="@string/app_name"
+        app:bottomLineText="@string/bottom_line_text" />
 
 </FrameLayout>

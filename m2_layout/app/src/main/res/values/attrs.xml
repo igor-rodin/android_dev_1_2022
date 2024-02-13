@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomView">
+        <attr name="topLineText" format="string"/>
+        <attr name="bottomLineText" format="string"/>
+    </declare-styleable>
+</resources>

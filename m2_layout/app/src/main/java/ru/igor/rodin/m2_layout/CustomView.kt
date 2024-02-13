@@ -16,9 +16,20 @@ class CustomView @JvmOverloads constructor(
     private val binding: ViewCustomBinding;
 
     init {
-        val inflater = LayoutInflater.from(context)
-        inflater.inflate(R.layout.view_custom, this, true)
+        LayoutInflater.from(context).inflate(R.layout.view_custom, this, true)
         binding = ViewCustomBinding.bind(this)
+        applyCustomAttr(context, attrs)
+    }
+
+    private fun applyCustomAttr(context: Context, attrs: AttributeSet?) {
+        context.theme.obtainStyledAttributes(attrs, R.styleable.CustomView, 0, 0).apply {
+            try {
+                getString(R.styleable.CustomView_topLineText)?.let { setTopLineText(it) }
+                getString(R.styleable.CustomView_bottomLineText)?.let { setBottomLineText(it) }
+            } finally {
+                recycle()
+            }
+        }
     }
 
     fun setTopLineText(value: CharSequence) {
