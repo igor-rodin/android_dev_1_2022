@@ -3,7 +3,13 @@
     <style name="Base.Theme.M4_components" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="checkboxStyle">@style/Widget.Profile.CheckBox</item>
     </style>
 
     <style name="Theme.M4_components" parent="Base.Theme.M4_components" />
+
+    <style name="Widget.Profile.CheckBox" parent="Widget.Material3.CompoundButton.CheckBox">
+        <item name="buttonTint">#03DAC5</item>
+        <item name="buttonIconTint">@color/white</item>
+    </style>
 </resources>

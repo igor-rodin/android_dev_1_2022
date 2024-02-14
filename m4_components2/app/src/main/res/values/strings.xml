@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">m4_components</string>
+    <string name="user_photo">Users\'s photo</string>
+    <string name="user_name_label">Имя</string>
+    <string name="phone_label">Телефон</string>
+    <string name="gender_header">Пол</string>
+    <string name="gender_man">М</string>
+    <string name="gender_female">Ж</string>
+    <string name="notifications_label">Получать уведомления</string>
+    <string name="notify_auth">Об авторизации на устройстве</string>
+    <string name="notify_news">О новинках и предложениях</string>
+    <string name="btn_save">Сохранить</string>
+    <string name="points_header">Баллы</string>
+    <string name="profile_points">"%1$d/%2$d"</string>
 </resources>
