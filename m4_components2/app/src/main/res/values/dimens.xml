@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="small_pad">4dp</dimen>
     <dimen name="middle_pad">16dp</dimen>
+    <dimen name="vert_margin_small">8dp</dimen>
+    <dimen name="vert_margin_middle">16dp</dimen>
+    <dimen name="big_image_size">120dp</dimen>
+
+    <dimen name="base_text_size">16dp</dimen>
 </resources>

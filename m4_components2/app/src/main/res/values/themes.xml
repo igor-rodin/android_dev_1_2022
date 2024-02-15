@@ -9,7 +9,22 @@
     <style name="Theme.M4_components" parent="Base.Theme.M4_components" />
 
     <style name="Widget.Profile.CheckBox" parent="Widget.Material3.CompoundButton.CheckBox">
-        <item name="buttonTint">#03DAC5</item>
+        <item name="buttonTint">@color/turquoise</item>
         <item name="buttonIconTint">@color/white</item>
+    </style>
+
+    <style name="BaseTextView">
+        <item name="android:textSize">@dimen/base_text_size</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="BaseTextView.InfoText">
+        <item name="android:textColor">@color/gray</item>
+    </style>
+    
+    <style name="FilledBox">
+        <item name="boxBackgroundColor">@color/purple</item>
+        <item name="boxBackgroundMode">filled</item>
+        <item name="boxCollapsedPaddingTop">@dimen/small_pad</item>
     </style>
 </resources>
