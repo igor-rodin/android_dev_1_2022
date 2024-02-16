@@ -46,6 +46,9 @@ class MainActivity : AppCompatActivity() {
         updateBtnState()
     }
 
+    /**
+     * Set initial state for progress bar with points
+     */
     private fun initPointsBar() {
         val currentPoints = Random.nextInt(MAX_POINTS + 1)
         with(binding) {
@@ -55,6 +58,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Update save button state after changing Name, Phone or notifications switcher
+     */
     private fun updateBtnState() {
         with(binding) {
             btnSave.isEnabled = isNameValid() && isPhoneValid() && isNotificationStateIsValid()
