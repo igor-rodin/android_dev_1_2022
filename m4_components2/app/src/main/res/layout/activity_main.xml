@@ -1,132 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    tools:context=".MainActivity"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/middle_pad"
-    tools:context=".MainActivity">
-
-    <ImageView
-        android:id="@+id/user_photo"
-        android:layout_width="@dimen/big_image_size"
-        android:layout_height="@dimen/big_image_size"
-        android:layout_gravity="center"
-        android:contentDescription="@string/user_photo"
-        android:scaleType="centerCrop"
-        android:src="@drawable/profile" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_input_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/user_name_label"
-        app:counterEnabled="true"
-        app:counterMaxLength="40"
-        app:endIconMode="clear_text">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/text_edit_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_input_phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/vert_margin_small"
-        android:hint="@string/phone_label"
-        style="@style/FilledBox"
-        app:counterMaxLength="10">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/text_edit_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="phone" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <RadioGroup
-        android:id="@+id/gender"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/gender_header"
-            android:textAppearance="@style/BaseTextView" />
-
-        <RadioButton
-            android:id="@+id/gender_man"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/gender_man" />
-
-        <RadioButton
-            android:id="@+id/gender_female"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/gender_female" />
-    </RadioGroup>
-
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/notifications"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:checked="true"
-        android:text="@string/notifications_label" />
-
-    <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/notify_auth"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:checked="true"
-        android:text="@string/notify_auth" />
-
-    <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/notify_news"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/notify_news" />
+    android:layout_width="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/vert_margin_small"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:padding="@dimen/middle_pad">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/points_header"
-            android:textAppearance="@style/BaseTextView"/>
+        <ImageView
+            android:id="@+id/user_photo"
+            android:layout_width="@dimen/big_image_size"
+            android:layout_height="@dimen/big_image_size"
+            android:layout_gravity="center"
+            android:contentDescription="@string/user_photo"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile" />
 
-        <TextView
-            android:id="@+id/profile_points"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="end"
-            android:textAppearance="@style/BaseTextView.InfoText"
-            tools:text="@tools:sample/lorem" />
+            android:hint="@string/user_name_label"
+            app:counterEnabled="true"
+            app:counterMaxLength="40"
+            app:endIconMode="clear_text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/text_edit_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_phone"
+            style="@style/FilledBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/vert_margin_small"
+            android:hint="@string/phone_label"
+            app:counterMaxLength="10">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/text_edit_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <RadioGroup
+            android:id="@+id/gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/gender_header"
+                android:textAppearance="@style/BaseTextView" />
+
+            <RadioButton
+                android:id="@+id/gender_man"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/gender_man" />
+
+            <RadioButton
+                android:id="@+id/gender_female"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/gender_female" />
+        </RadioGroup>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/notifications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/notifications_label" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/notify_auth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/notify_auth" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/notify_news"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/notify_news" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/vert_margin_small"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/points_header"
+                android:textAppearance="@style/BaseTextView" />
+
+            <TextView
+                android:id="@+id/profile_points"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:textAppearance="@style/BaseTextView.InfoText"
+                tools:text="@tools:sample/lorem" />
+        </LinearLayout>
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/points"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/vert_margin_middle"
+            tools:progress="20" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_save" />
     </LinearLayout>
-
-    <com.google.android.material.progressindicator.LinearProgressIndicator
-        android:id="@+id/points"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/vert_margin_middle"
-        tools:progress="20" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_save" />
-</LinearLayout>
+</ScrollView>
