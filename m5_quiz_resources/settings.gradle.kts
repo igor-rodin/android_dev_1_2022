@@ -14,3 +14,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "m5_quiz_resources"
+include(":app")
