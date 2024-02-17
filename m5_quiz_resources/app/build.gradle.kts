@@ -8,7 +8,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "ru.igor.rodin.m5_quiz_resources"
+        applicationId = "ru.igor.rodin.iQuiz"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -32,6 +32,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 }
 
