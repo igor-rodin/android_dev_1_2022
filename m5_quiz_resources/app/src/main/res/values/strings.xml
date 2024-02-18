@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">iQuiz</string>
+    <string name="welcome_picture_description">Welcome picture</string>
+    <string name="next_btn_label">Продолжить</string>
 </resources>
