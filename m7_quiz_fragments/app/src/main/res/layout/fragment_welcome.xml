@@ -4,40 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.WelcomeFragment">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/begin_content"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintGuide_begin="@dimen/middle_padding" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/end_content"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintGuide_end="@dimen/middle_padding" />
 
     <ImageView
         android:id="@+id/welcome_image"
-        android:layout_width="@dimen/big_size_picture"
-        android:layout_height="@dimen/big_size_picture"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:contentDescription="@string/welcome_picture_description"
         android:src="@drawable/welcome_picture"
-        app:layout_constraintTop_toTopOf="@id/begin_content"
-        app:layout_constraintBottom_toBottomOf="@id/end_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/end_content"
+        app:layout_constraintStart_toStartOf="@id/begin_content"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/start_quiz"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/next_btn_label"
-        app:layout_constraintEnd_toEndOf="@id/welcome_image"
-        app:layout_constraintStart_toStartOf="@id/welcome_image"
+        app:layout_constraintEnd_toEndOf="@id/end_content"
+        app:layout_constraintStart_toStartOf="@id/begin_content"
         app:layout_constraintTop_toBottomOf="@id/welcome_image" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

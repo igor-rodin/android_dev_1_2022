@@ -2,4 +2,9 @@
     <string name="app_name">iQuiz</string>
     <string name="welcome_picture_description">Welcome picture</string>
     <string name="next_btn_label">Начать</string>
+    <string name="send_quiz">Отправить</string>
+    <string name="back">Назад</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="restart_quiz">Начать заново</string>
 </resources>
