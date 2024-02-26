@@ -4,7 +4,6 @@
     <string name="next_btn_label">Начать</string>
     <string name="send_quiz">Отправить</string>
     <string name="back">Назад</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="restart_quiz">Начать заново</string>
+    <string name="quiz_fragment_title">Ответье на несколько вопросов о курсе \'Андроид разработчик\'</string>
 </resources>

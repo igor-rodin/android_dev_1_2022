@@ -1,0 +1,5 @@
+<resources>
+    <declare-styleable name="QuestionView">
+        <attr name="question" format="string" />
+    </declare-styleable>
+</resources>

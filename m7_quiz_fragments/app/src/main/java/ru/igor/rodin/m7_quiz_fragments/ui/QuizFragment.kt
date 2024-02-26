@@ -5,9 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.allViews
+import androidx.core.view.children
 import androidx.navigation.fragment.findNavController
 import ru.igor.rodin.m7_quiz_fragments.R
 import ru.igor.rodin.m7_quiz_fragments.databinding.FragmentQuizBinding
+import ru.igor.rodin.m7_quiz_fragments.quiz.QuizStorage
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -47,6 +50,8 @@ class QuizFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding){
+            fillQuiz(QuizStorage.Locale.Ru)
+
             back.setOnClickListener {
                 findNavController().navigate(R.id.action_quiz_fragment_to_welcome_fragment)
             }
@@ -57,6 +62,17 @@ class QuizFragment : Fragment() {
 
 
 
+    }
+
+    private fun FragmentQuizBinding.fillQuiz(locale: QuizStorage.Locale) {
+        val quizQuestions = QuizStorage.getQuiz(locale).questions
+
+        root.allViews.filter { v -> v is QuestionView }.forEachIndexed { idx, view ->
+            (view as QuestionView).apply {
+                setQuestion("1. ${quizQuestions[idx].question}")
+                setAnswers(quizQuestions[idx].answers)
+            }
+        }
     }
 
     override fun onDestroy() {
