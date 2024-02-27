@@ -10,6 +10,7 @@ import ru.igor.rodin.m7_quiz_fragments.R
 import ru.igor.rodin.m7_quiz_fragments.databinding.FragmentResultBinding
 
 private const val QUIZ_RESULT = "quizResult"
+
 class ResultFragment : Fragment() {
     private var _binding: FragmentResultBinding? = null
     val binding get() = _binding!!
@@ -19,7 +20,7 @@ class ResultFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentResultBinding.inflate(inflater, container, false)
-        return  binding.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

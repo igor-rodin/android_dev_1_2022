@@ -10,7 +10,8 @@ import androidx.core.view.allViews
 import ru.igor.rodin.m7_quiz_fragments.R
 import ru.igor.rodin.m7_quiz_fragments.databinding.ViewQuestionBinding
 
-typealias onQuestionCheckedListener =  (groupTag: Int, checkedIdx: Int, checkedButton: RadioButton) -> Unit
+typealias onQuestionCheckedListener = (groupTag: Int, checkedIdx: Int, checkedButton: RadioButton) -> Unit
+
 class QuestionView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,

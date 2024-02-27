@@ -1,7 +1,6 @@
 package ru.igor.rodin.m7_quiz_fragments.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -48,7 +47,7 @@ class QuizFragment : Fragment() {
             }
             sendQuiz.setOnClickListener {
                 if (userChoice.size != quiz.questions.size) {
-                    showWarningMessage(getString(R.string.should_all_answers_warning_mesage))
+                    showMessage(getString(R.string.should_all_answers_warning_mesage))
                 } else {
                     val messageResult =
                         QuizStorage.answer(quiz, userChoice.values.toList())
@@ -64,7 +63,7 @@ class QuizFragment : Fragment() {
     }
 
     private fun getQuizForLocale(locale: QuizStorage.Locale? = null): Quiz {
-        if (locale != null){
+        if (locale != null) {
             return QuizStorage.getQuiz(locale)
         }
         return when (resources.configuration.locales.get(0).toLanguageTag()) {
@@ -72,7 +71,8 @@ class QuizFragment : Fragment() {
             else -> QuizStorage.getQuiz(QuizStorage.Locale.En)
         }
     }
-    private fun showWarningMessage(message: String) {
+
+    private fun showMessage(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
@@ -83,7 +83,7 @@ class QuizFragment : Fragment() {
             (view as QuestionView).apply {
                 setQuestion("${idx + 1}. ${quizQuestions[idx].question}")
                 setAnswers(quizQuestions[idx].answers)
-                setOnCheckedQuestionListener {groupTag, checkedIdx, _ ->
+                setOnCheckedQuestionListener { groupTag, checkedIdx, _ ->
                     updateUserChoice(groupTag, checkedIdx)
                 }
             }
