@@ -2,15 +2,15 @@ package ru.igor.rodin.m7_quiz_fragments.ui
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.RadioButton
-import androidx.annotation.IntegerRes
 import androidx.core.view.allViews
 import ru.igor.rodin.m7_quiz_fragments.R
 import ru.igor.rodin.m7_quiz_fragments.databinding.ViewQuestionBinding
 
-typealias onQuestionCheckedListener = (groupTag: Int, checkedIdx: Int, checkedButton: RadioButton) -> Unit
+typealias onQuestionCheckedListener = (viewTag: Int, checkedIdx: Int, checkedButton: RadioButton) -> Unit
 
 class QuestionView @JvmOverloads constructor(
     context: Context,
@@ -34,7 +34,7 @@ class QuestionView @JvmOverloads constructor(
             run {
                 val button = findViewById<RadioButton>(id)
                 val idx = radioGroup.indexOfChild(button)
-                listener?.invoke(radioGroup.hashCode(), idx - 1, button)
+                listener?.invoke(this@QuestionView.id, idx - 1, button)
             }
         }
     }

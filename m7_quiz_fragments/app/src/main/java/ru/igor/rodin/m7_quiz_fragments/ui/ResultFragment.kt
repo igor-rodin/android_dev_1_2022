@@ -9,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import ru.igor.rodin.m7_quiz_fragments.R
 import ru.igor.rodin.m7_quiz_fragments.databinding.FragmentResultBinding
 
-private const val QUIZ_RESULT = "quizResult"
 
 class ResultFragment : Fragment() {
     private var _binding: FragmentResultBinding? = null
@@ -25,11 +24,12 @@ class ResultFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.getString(QUIZ_RESULT).let {
+        arguments?.getString(QuizFragment.QUIZ_RESULT).let {
             binding.quizResult.text = it
         }
         binding.restartQuiz.setOnClickListener {
             findNavController().navigate(R.id.action_result_fragment_to_quiz_fragment)
         }
     }
+
 }

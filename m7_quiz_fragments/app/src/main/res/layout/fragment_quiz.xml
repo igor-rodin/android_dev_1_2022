@@ -25,6 +25,7 @@
             android:id="@+id/asq1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:tag="1"
             android:layout_marginBottom="@dimen/middle_pad"
             app:question="@string/app_name" />
 
@@ -32,6 +33,7 @@
             android:id="@+id/asq2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:tag="2"
             android:layout_marginBottom="@dimen/middle_pad"
             app:question="@string/restart_quiz" />
 
@@ -39,6 +41,7 @@
             android:id="@+id/asq3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:tag="3"
             android:layout_marginBottom="@dimen/middle_pad"
             app:question="@string/back" />
 

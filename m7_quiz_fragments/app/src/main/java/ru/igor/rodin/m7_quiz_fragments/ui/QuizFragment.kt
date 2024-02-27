@@ -14,8 +14,6 @@ import ru.igor.rodin.m7_quiz_fragments.databinding.FragmentQuizBinding
 import ru.igor.rodin.m7_quiz_fragments.quiz.Quiz
 import ru.igor.rodin.m7_quiz_fragments.quiz.QuizStorage
 
-private const val QUIZ_RESULT = "quizResult"
-
 class QuizFragment : Fragment() {
     private lateinit var quiz: Quiz
     private val userChoice: MutableMap<Int, Int> = mutableMapOf()
@@ -83,8 +81,8 @@ class QuizFragment : Fragment() {
             (view as QuestionView).apply {
                 setQuestion("${idx + 1}. ${quizQuestions[idx].question}")
                 setAnswers(quizQuestions[idx].answers)
-                setOnCheckedQuestionListener { groupTag, checkedIdx, _ ->
-                    updateUserChoice(groupTag, checkedIdx)
+                setOnCheckedQuestionListener { viewTag, checkedIdx, _ ->
+                    updateUserChoice(viewTag, checkedIdx)
                 }
             }
         }
@@ -97,5 +95,9 @@ class QuizFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    companion object {
+        const val QUIZ_RESULT = "quizResult"
     }
 }
