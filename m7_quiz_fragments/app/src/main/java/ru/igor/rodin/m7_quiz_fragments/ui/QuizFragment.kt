@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.allViews
+import android.widget.Toast
 import androidx.core.view.children
 import androidx.navigation.fragment.findNavController
 import ru.igor.rodin.m7_quiz_fragments.R
@@ -67,10 +67,11 @@ class QuizFragment : Fragment() {
     private fun FragmentQuizBinding.fillQuiz(locale: QuizStorage.Locale) {
         val quizQuestions = QuizStorage.getQuiz(locale).questions
 
-        root.allViews.filter { v -> v is QuestionView }.forEachIndexed { idx, view ->
+        questions.children.filter { v -> v is QuestionView }.forEachIndexed { idx, view ->
             (view as QuestionView).apply {
                 setQuestion("1. ${quizQuestions[idx].question}")
                 setAnswers(quizQuestions[idx].answers)
+                setOnCheckedQuestionListener { checkedIdx, _ -> Toast.makeText(context, checkedIdx.toString(), Toast.LENGTH_SHORT).show() }
             }
         }
     }
