@@ -1,41 +1,32 @@
 package ru.igor.rodin.m7_quiz_fragments.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.core.view.children
 import androidx.navigation.fragment.findNavController
 import ru.igor.rodin.m7_quiz_fragments.R
 import ru.igor.rodin.m7_quiz_fragments.databinding.FragmentQuizBinding
+import ru.igor.rodin.m7_quiz_fragments.quiz.Quiz
 import ru.igor.rodin.m7_quiz_fragments.quiz.QuizStorage
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private const val QUIZ_RESULT = "quizResult"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [QuizFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class QuizFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
+    private lateinit var quiz: Quiz
+    private val userChoice: MutableMap<Int, Int> = mutableMapOf()
     private var _binding: FragmentQuizBinding? = null
-    val binding get() = _binding!!
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
+        quiz = getQuizForLocale()
     }
 
     override fun onCreateView(
@@ -49,55 +40,62 @@ class QuizFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        with(binding){
-            fillQuiz(QuizStorage.Locale.Ru)
+        with(binding) {
+            fillQuiz(quiz)
 
             back.setOnClickListener {
                 findNavController().navigate(R.id.action_quiz_fragment_to_welcome_fragment)
             }
             sendQuiz.setOnClickListener {
-                findNavController().navigate(R.id.action_quiz_fragment_to_resultFragment)
+                if (userChoice.size != quiz.questions.size) {
+                    showWarningMessage(getString(R.string.should_all_answers_warning_mesage))
+                } else {
+                    val messageResult =
+                        QuizStorage.answer(quiz, userChoice.values.toList())
+                    findNavController().navigate(
+                        R.id.action_quiz_fragment_to_resultFragment,
+                        bundleOf(QUIZ_RESULT to messageResult)
+                    )
+                }
             }
         }
-
 
 
     }
 
-    private fun FragmentQuizBinding.fillQuiz(locale: QuizStorage.Locale) {
-        val quizQuestions = QuizStorage.getQuiz(locale).questions
+    private fun getQuizForLocale(locale: QuizStorage.Locale? = null): Quiz {
+        if (locale != null){
+            return QuizStorage.getQuiz(locale)
+        }
+        return when (resources.configuration.locales.get(0).toLanguageTag()) {
+            "ru-RU" -> QuizStorage.getQuiz(QuizStorage.Locale.Ru)
+            else -> QuizStorage.getQuiz(QuizStorage.Locale.En)
+        }
+    }
+    private fun showWarningMessage(message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun FragmentQuizBinding.fillQuiz(quiz: Quiz) {
+        val quizQuestions = quiz.questions
 
         questions.children.filter { v -> v is QuestionView }.forEachIndexed { idx, view ->
             (view as QuestionView).apply {
-                setQuestion("1. ${quizQuestions[idx].question}")
+                setQuestion("${idx + 1}. ${quizQuestions[idx].question}")
                 setAnswers(quizQuestions[idx].answers)
-                setOnCheckedQuestionListener { checkedIdx, _ -> Toast.makeText(context, checkedIdx.toString(), Toast.LENGTH_SHORT).show() }
+                setOnCheckedQuestionListener {groupTag, checkedIdx, _ ->
+                    updateUserChoice(groupTag, checkedIdx)
+                }
             }
         }
+    }
+
+    private fun updateUserChoice(groupTag: Int, checkedIdx: Int) {
+        userChoice[groupTag] = checkedIdx
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment QuizFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            QuizFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }

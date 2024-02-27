@@ -1,83 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/questions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         tools:context=".ui.QuizFragment">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/quiz_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textColor="@color/material_dynamic_primary20"
-            android:padding="4dp"
             android:gravity="center"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="@string/quiz_fragment_title"/>
+            android:padding="@dimen/middle_pad"
+            android:text="@string/quiz_fragment_title"
+            android:textAppearance="@style/TextTitle" />
 
         <ru.igor.rodin.m7_quiz_fragments.ui.QuestionView
             android:id="@+id/asq1"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/quiz_title"
-            app:layout_constraintBottom_toTopOf="@id/asq2"
+            android:layout_marginBottom="@dimen/middle_pad"
             app:question="@string/app_name" />
 
         <ru.igor.rodin.m7_quiz_fragments.ui.QuestionView
             android:id="@+id/asq2"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/asq1"
-            app:layout_constraintBottom_toTopOf="@id/asq3"
+            android:layout_marginBottom="@dimen/middle_pad"
             app:question="@string/restart_quiz" />
 
         <ru.igor.rodin.m7_quiz_fragments.ui.QuestionView
             android:id="@+id/asq3"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/back"
+            android:layout_marginBottom="@dimen/middle_pad"
             app:question="@string/back" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/back"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="@string/back"
-            app:layout_constraintBottom_toBottomOf="@id/send_quiz"
-            app:layout_constraintEnd_toStartOf="@id/send_quiz"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/send_quiz" />
+            android:layout_marginTop="@dimen/middle_pad"
+            android:text="@string/back" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/send_quiz"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/send_quiz"
-            app:layout_constraintTop_toBottomOf="@id/asq3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/back" />
+            android:textAllCaps="true"
+            android:text="@string/send_quiz" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </ScrollView>

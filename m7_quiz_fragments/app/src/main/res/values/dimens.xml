@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="middle_padding">16dp</dimen>
+    <dimen name="big_pad">16dp</dimen>
     <dimen name="big_size_picture">240dp</dimen>
+    <dimen name="middle_pad">8dp</dimen>
+    <dimen name="small_pad">4dp</dimen>
 </resources>

@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">iQuiz</string>
-    <string name="welcome_picture_description">Welcome picture</string>
-    <string name="next_btn_label">Начать</string>
+    <string name="app_name" translatable="false">iQuiz</string>
+    <string name="welcome_picture_description" translatable="false">Welcome picture</string>
+    <string name="start">Начать</string>
     <string name="send_quiz">Отправить</string>
     <string name="back">Назад</string>
     <string name="restart_quiz">Начать заново</string>
     <string name="quiz_fragment_title">Ответье на несколько вопросов о курсе \'Андроид разработчик\'</string>
+    <string name="should_all_answers_warning_mesage">Необходимо ответить на все вопросы</string>
 </resources>

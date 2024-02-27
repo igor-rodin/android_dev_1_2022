@@ -11,14 +11,14 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="@dimen/middle_padding" />
+        app:layout_constraintGuide_begin="@dimen/big_pad" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/end_content"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="@dimen/middle_padding" />
+        app:layout_constraintGuide_end="@dimen/big_pad" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"

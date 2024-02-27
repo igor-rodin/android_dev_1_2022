@@ -22,7 +22,7 @@
         android:id="@+id/start_quiz"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/next_btn_label"
+        android:text="@string/start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/welcome_image" />
