@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.transition.TransitionInflater
 import ru.igor.rodin.m8_quiz_animation.R
 import ru.igor.rodin.m8_quiz_animation.databinding.FragmentWelcomeBinding
 

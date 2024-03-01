@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_welcome">
         <action
             android:id="@+id/action_welcome_fragment_to_quiz_fragment"
-            app:destination="@id/quiz_fragment" />
+            app:destination="@id/quiz_fragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/enter_anim"
+            app:popExitAnim="@anim/exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/quiz_fragment"
@@ -21,14 +25,21 @@
         tools:layout="@layout/fragment_quiz">
         <action
             android:id="@+id/action_quiz_fragment_to_welcome_fragment"
+            app:destination="@id/welcome_fragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/enter_anim"
+            app:popExitAnim="@anim/exit_anim"
             app:popUpTo="@id/welcome_fragment"
-            app:popUpToInclusive="true"
-            app:destination="@id/welcome_fragment" />
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_quiz_fragment_to_resultFragment"
-            app:popUpTo="@id/welcome_fragment"
             app:destination="@id/result_fragment"
-             />
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/enter_anim"
+            app:popExitAnim="@anim/exit_anim"
+            app:popUpTo="@id/welcome_fragment" />
     </fragment>
     <fragment
         android:id="@+id/result_fragment"
@@ -37,7 +48,11 @@
         tools:layout="@layout/fragment_result">
         <action
             android:id="@+id/action_result_fragment_to_quiz_fragment"
-            app:popUpTo="@id/welcome_fragment"
-            app:destination="@id/quiz_fragment" />
+            app:destination="@id/quiz_fragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/enter_anim"
+            app:popExitAnim="@anim/exit_anim"
+            app:popUpTo="@id/welcome_fragment" />
     </fragment>
 </navigation>

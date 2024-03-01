@@ -2,6 +2,7 @@ package ru.igor.rodin.m8_quiz_animation.ui
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.RadioButton

@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "m7_quiz_fragments"
+rootProject.name = "m8_quiz_animation"
 include(":app")

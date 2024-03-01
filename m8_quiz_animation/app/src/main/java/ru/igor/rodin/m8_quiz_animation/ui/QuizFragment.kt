@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.core.view.children
 import androidx.navigation.fragment.findNavController
+import androidx.transition.TransitionInflater
 import ru.igor.rodin.m8_quiz_animation.R
 import ru.igor.rodin.m8_quiz_animation.databinding.FragmentQuizBinding
 import ru.igor.rodin.m8_quiz_animation.quiz.Quiz
@@ -39,7 +40,6 @@ class QuizFragment : Fragment() {
 
         with(binding) {
             fillQuiz(quiz)
-
             back.setOnClickListener {
                 findNavController().navigate(R.id.action_quiz_fragment_to_welcome_fragment)
             }
