@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ui.ResultFragment">
 
@@ -14,6 +15,12 @@
         android:padding="@dimen/middle_pad"
         android:text="@string/quiz_result_title"
         android:textAppearance="@style/TextTitle" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/big_size_picture" />
+
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/quiz_result"

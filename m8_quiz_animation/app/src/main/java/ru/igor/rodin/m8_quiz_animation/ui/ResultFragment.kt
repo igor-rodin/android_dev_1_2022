@@ -7,9 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
-import android.view.animation.AccelerateInterpolator
 import androidx.navigation.fragment.findNavController
-import androidx.transition.TransitionInflater
+import com.airbnb.lottie.LottieAnimationView
+import com.airbnb.lottie.LottieDrawable
 import ru.igor.rodin.m8_quiz_animation.R
 import ru.igor.rodin.m8_quiz_animation.databinding.FragmentResultBinding
 
@@ -30,14 +30,33 @@ class ResultFragment : Fragment() {
 
         arguments?.getString(QuizFragment.QUIZ_RESULT).let {
             binding.quizResult.text = it
-            binding.quizResult.translationX
         }
 
+        initLottie(binding.animationView)
         animateUI()
+        startLottieAnimate(binding.animationView)
 
         binding.restartQuiz.setOnClickListener {
+            stopLottieAnimate(binding.animationView)
             findNavController().navigate(R.id.action_result_fragment_to_quiz_fragment)
         }
+    }
+
+
+    private fun initLottie(animationView: LottieAnimationView) {
+        with(animationView) {
+            setRepeatCount(LottieDrawable.INFINITE)
+            setRepeatMode(LottieDrawable.RESTART)
+            setAnimation(R.raw.lottie_anim)
+        }
+    }
+
+    private fun startLottieAnimate(animationView: LottieAnimationView) {
+        animationView.playAnimation()
+    }
+
+    private fun stopLottieAnimate(animationView: LottieAnimationView) {
+        animationView.pauseAnimation()
     }
 
     private fun animateUI() {
@@ -47,11 +66,11 @@ class ResultFragment : Fragment() {
             start()
         }
 
-        ObjectAnimator.ofFloat(binding.quizResult, "alpha", 0f, 1f).apply {
+        ObjectAnimator.ofFloat(binding.quizResult, "rotation", 360f).apply {
             duration = 2000
             interpolator = AccelerateDecelerateInterpolator()
             start()
         }
-    }
 
+    }
 }
