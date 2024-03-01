@@ -7,4 +7,5 @@
     <string name="restart_quiz">Начать заново</string>
     <string name="quiz_fragment_title">Ответье на несколько вопросов о курсе \'Андроид разработчик\'</string>
     <string name="should_all_answers_warning_mesage">Необходимо ответить на все вопросы</string>
+    <string name="quiz_result_title">Результаты опроса</string>
 </resources>

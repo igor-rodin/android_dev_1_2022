@@ -7,12 +7,21 @@
     tools:context=".ui.ResultFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/result_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/middle_pad"
+        android:text="@string/quiz_result_title"
+        android:textAppearance="@style/TextTitle" />
+
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/quiz_result"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:padding="@dimen/big_pad"
-        android:textAppearance="@style/TextTitle"
+        android:textAppearance="?attr/textAppearanceBodyLarge"
         android:gravity="center"
         tools:text="@tools:sample/lorem/random" />
 

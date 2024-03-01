@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.BounceInterpolator
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.core.view.children
@@ -17,7 +19,7 @@ import ru.igor.rodin.m8_quiz_animation.databinding.FragmentQuizBinding
 import ru.igor.rodin.m8_quiz_animation.quiz.Quiz
 import ru.igor.rodin.m8_quiz_animation.quiz.QuizStorage
 
-private const val LONG_DURATION = 1000L
+//private const val LONG_DURATION = 1000L
 
 private const val START_DELAY_DURATION = 400L
 
@@ -91,8 +93,7 @@ class QuizFragment : Fragment() {
                 setQuestion("${idx + 1}. ${quizQuestions[idx].question}")
                 setAnswers(quizQuestions[idx].answers)
 
-                animate().alpha(1.0f).setDuration(LONG_DURATION)
-                    .setStartDelay((idx + 1) * START_DELAY_DURATION).start()
+                animateFadeOut(delay = (idx + 1) * START_DELAY_DURATION)
 
                 setOnCheckedQuestionListener { viewTag, checkedIdx, _ ->
                     updateUserChoice(viewTag, checkedIdx)

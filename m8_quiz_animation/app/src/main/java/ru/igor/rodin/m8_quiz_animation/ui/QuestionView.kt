@@ -10,6 +10,7 @@ import androidx.core.view.allViews
 import ru.igor.rodin.m8_quiz_animation.R
 import ru.igor.rodin.m8_quiz_animation.databinding.ViewQuestionBinding
 
+private const val LONG_DURATION = 1000L
 typealias onQuestionCheckedListener = (viewTag: Int, checkedIdx: Int, checkedButton: RadioButton) -> Unit
 
 class QuestionView @JvmOverloads constructor(
@@ -65,4 +66,9 @@ class QuestionView @JvmOverloads constructor(
     fun setOnCheckedQuestionListener(listener: onQuestionCheckedListener?) {
         this.listener = listener
     }
+}
+
+fun QuestionView.animateFadeOut(duration: Long = LONG_DURATION, delay: Long) {
+    animate().alpha(1.0f).setDuration(duration)
+        .setStartDelay(delay)
 }
