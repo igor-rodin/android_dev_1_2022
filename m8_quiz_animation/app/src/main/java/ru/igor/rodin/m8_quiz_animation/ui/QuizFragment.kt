@@ -1,5 +1,6 @@
 package ru.igor.rodin.m8_quiz_animation.ui
 
+import android.animation.TimeInterpolator
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,10 +11,15 @@ import androidx.core.os.bundleOf
 import androidx.core.view.children
 import androidx.navigation.fragment.findNavController
 import androidx.transition.TransitionInflater
+import androidx.transition.Visibility
 import ru.igor.rodin.m8_quiz_animation.R
 import ru.igor.rodin.m8_quiz_animation.databinding.FragmentQuizBinding
 import ru.igor.rodin.m8_quiz_animation.quiz.Quiz
 import ru.igor.rodin.m8_quiz_animation.quiz.QuizStorage
+
+private const val LONG_DURATION = 1000L
+
+private const val START_DELAY_DURATION = 400L
 
 class QuizFragment : Fragment() {
     private lateinit var quiz: Quiz
@@ -79,8 +85,15 @@ class QuizFragment : Fragment() {
 
         questions.children.filter { v -> v is QuestionView }.forEachIndexed { idx, view ->
             (view as QuestionView).apply {
+                alpha = 0.0f
+                visibility = View.VISIBLE
+
                 setQuestion("${idx + 1}. ${quizQuestions[idx].question}")
                 setAnswers(quizQuestions[idx].answers)
+
+                animate().alpha(1.0f).setDuration(LONG_DURATION)
+                    .setStartDelay((idx + 1) * START_DELAY_DURATION).start()
+
                 setOnCheckedQuestionListener { viewTag, checkedIdx, _ ->
                     updateUserChoice(viewTag, checkedIdx)
                 }
