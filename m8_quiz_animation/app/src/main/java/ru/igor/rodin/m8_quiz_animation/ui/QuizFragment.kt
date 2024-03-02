@@ -112,7 +112,6 @@ class QuizFragment : Fragment() {
     }
 
     companion object {
-        @JvmStatic
-        val QUIZ_RESULT = "quizResult"
+        const val QUIZ_RESULT = "quizResult"
     }
 }

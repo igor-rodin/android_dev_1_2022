@@ -1,6 +1,7 @@
 package ru.igor.rodin.m8_quiz_animation.ui
 
 import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -60,7 +61,10 @@ class ResultFragment : Fragment() {
     }
 
     private fun animateUI() {
-        ObjectAnimator.ofFloat(binding.resultTitle, "scaleY", 1f, 2f, 1f).apply {
+        val scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 1f, 2f, 1f)
+        val scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 1f, 2f, 1f)
+
+        ObjectAnimator.ofPropertyValuesHolder(binding.resultTitle, scaleX, scaleY).apply {
             duration = 2000
             interpolator = AccelerateDecelerateInterpolator()
             start()
