@@ -63,7 +63,7 @@ class WelcomeFragment : Fragment() {
                 }
 
         birthDAteDialog.show(
-            parentFragmentManager,
+            childFragmentManager,
             BIRTH_DATE_DIALOG
         )
     }
