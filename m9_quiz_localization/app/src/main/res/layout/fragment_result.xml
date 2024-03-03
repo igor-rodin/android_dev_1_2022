@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ui.ResultFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/result_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/middle_pad"
+        android:text="@string/quiz_result_title"
+        android:textAppearance="@style/TextTitle" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/big_size_picture" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/quiz_result"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="@dimen/big_pad"
+        android:textAppearance="?attr/textAppearanceBodyLarge"
+        android:gravity="center"
+        tools:text="@tools:sample/lorem/random" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/restart_quiz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/restart_quiz" />
+
+</LinearLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/begin_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/big_pad" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="@dimen/big_pad" />
+
+    <ImageView
+        android:id="@+id/welcome_image"
+        android:layout_width="@dimen/big_size_picture"
+        android:layout_height="@dimen/big_size_picture"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/welcome_picture_description"
+        android:src="@drawable/welcome_picture"
+        app:layout_constraintTop_toTopOf="@id/begin_content"
+        app:layout_constraintBottom_toBottomOf="@id/end_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/start"
+        app:layout_constraintEnd_toEndOf="@id/welcome_image"
+        app:layout_constraintStart_toStartOf="@id/welcome_image"
+        app:layout_constraintTop_toBottomOf="@id/welcome_image" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/questions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".ui.QuizFragment">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/quiz_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/middle_pad"
+            android:text="@string/quiz_fragment_title"
+            android:textAppearance="@style/TextTitle" />
+
+        <ru.igor.rodin.m9_quiz_localization.ui.QuestionView
+            android:id="@+id/asq1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_marginBottom="@dimen/middle_pad"
+            app:question="@string/app_name" />
+
+        <ru.igor.rodin.m9_quiz_localization.ui.QuestionView
+            android:id="@+id/asq2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_marginBottom="@dimen/middle_pad"
+            app:question="@string/restart_quiz" />
+
+        <ru.igor.rodin.m9_quiz_localization.ui.QuestionView
+            android:id="@+id/asq3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_marginBottom="@dimen/middle_pad"
+            app:question="@string/back" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/middle_pad"
+            android:text="@string/back" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/send_quiz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:text="@string/send_quiz" />
+
+    </LinearLayout>
+</ScrollView>
