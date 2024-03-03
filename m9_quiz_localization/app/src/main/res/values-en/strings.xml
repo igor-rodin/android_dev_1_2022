@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="start">Start</string>
-    <string name="send_quiz">Send</string>
-    <string name="back">Back</string>
-    <string name="restart_quiz">Restart</string>
-    <string name="quiz_fragment_title">Answer a few questions about the \'Android Developer\' course</string>
-    <string name="should_all_answers_warning_mesage">All questions must be answered</string>
-</resources>

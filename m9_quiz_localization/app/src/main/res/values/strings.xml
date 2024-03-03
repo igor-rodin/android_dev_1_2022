@@ -1,15 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">iQuiz</string>
     <string name="welcome_picture_description" translatable="false">Welcome picture</string>
-    <string name="start">Начать</string>
-    <string name="send_quiz">Отправить</string>
-    <string name="back">Назад</string>
-    <string name="restart_quiz">Начать заново</string>
-    <string name="quiz_fragment_title">Ответье на несколько вопросов о курсе \'Андроид разработчик\'</string>
-    <string name="should_all_answers_warning_mesage">Необходимо ответить на все вопросы</string>
-    <string name="quiz_result_title">Результаты опроса</string>
-    <string name="choose_birthdate_btn_label">Укажите вашу дату рождения</string>
-    <string name="birthdate_dialog_title">Дата рождения</string>
-    <string name="date_format">dd MMMM yyyy</string>
-    <string name="snakebar_birthdate_message">Ваша дата рождения: %1$s</string>
+    <string name="start">Start</string>
+    <string name="send_quiz">Send</string>
+    <string name="back">Back</string>
+    <string name="restart_quiz">Restart</string>
+    <string name="quiz_fragment_title">Answer a few questions about the \'Android Developer\' course</string>
+    <string name="should_all_answers_warning_mesage">All questions must be answered</string>
+    <string name="quiz_result_title">Survey results</string>
+    <string name="choose_birthdate_btn_label">Please indicate your date of birth</string>
+    <string name="date_format" translatable="false">dd MMMM yyyy</string>
+    <string name="birthdate_dialog_title">Date of Birth</string>
+    <string name="snakebar_birthdate_message">Your date of birth: %1$s</string>
 </resources>

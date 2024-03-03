@@ -33,7 +33,7 @@ class WelcomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.chooseBirthdate?.setOnClickListener { showChooseBirthdate() }
+        binding.chooseBirthdate?.setOnClickListener { showChosenBirthdate() }
 
         binding.startQuiz?.setOnClickListener {
             findNavController().navigate(R.id.action_welcome_fragment_to_quiz_fragment)
@@ -41,7 +41,7 @@ class WelcomeFragment : Fragment() {
     }
 
     @SuppressLint("SimpleDateFormat")
-    private fun showChooseBirthdate() {
+    private fun showChosenBirthdate() {
         val calendar = Calendar.getInstance()
         val dateFormat = SimpleDateFormat(getString(R.string.date_format))
 
