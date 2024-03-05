@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="middle_track_size">8dp</dimen>
+    <dimen name="margin_middle">32dp</dimen>
+    <dimen name="margin_big">64dp</dimen>
+</resources>

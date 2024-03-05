@@ -2,8 +2,27 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.M10_timer_life_cycle" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-         <item name="colorPrimary">@color/light_primary</item>
+        <item name="colorPrimary">@color/light_primary</item>
     </style>
 
     <style name="Theme.M10_timer_life_cycle" parent="Base.Theme.M10_timer_life_cycle" />
+
+    <style name="CDT.Base.TitleTextStyle" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textSize">36sp</item>
+    </style>
+
+    <style name="CDT.TimerTextStyle" parent="CDT.Base.TitleTextStyle">
+        <item name="android:textSize">60sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CDT.ButtonStyle" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:textAllCaps">true</item>
+        <item name="strokeWidth">4dp</item>
+        <item name="strokeColor">?android:attr/colorPrimary</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">4dp</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
 </resources>

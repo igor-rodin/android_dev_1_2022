@@ -26,9 +26,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun initUI() {
         with(binding) {
-            timerProgress.max = 60
-            timerProgress.progress = 30
-            cdtValue.text = timerProgress.progress.toString()
+            timerProgress.max = 20
+            timerProgress.progress = 16
+
+            cdtValue.text = "4"
+
+            timerSeekBar.valueFrom = 10f
+            timerSeekBar.valueTo = 60f
+            timerSeekBar.stepSize = 10f
+            timerSeekBar.value = 20f
         }
     }
 
