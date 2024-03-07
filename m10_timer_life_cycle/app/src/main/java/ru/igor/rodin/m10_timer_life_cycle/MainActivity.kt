@@ -1,7 +1,8 @@
 package ru.igor.rodin.m10_timer_life_cycle
 
 import android.os.Bundle
-import android.util.Log
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -28,42 +29,14 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val timerState = savedInstanceState?.getParcelable(KEY_STATE) ?: CDTState.DEFAULT
-        Log.d("TIMER-ON-CREATE", timerState.toString())
-        initUI(timerState)
+        val timerSavedState = savedInstanceState?.getParcelable(KEY_STATE) ?: CDTState.DEFAULT
 
-        with(binding) {
-            timer.apply {
-                duration = timerState.duration
-                currentValue = timerState.currentValue * 1000
-                setOnFinishAction {
-                    Log.d("TIMER_FINISH", timer.currentValue.toString())
-                    updateProgress(timer.currentValue)
-                    timerSeekBar.isEnabled = true
-                    startButton.isEnabled = true
-                }
+        initUI(timerSavedState)
 
-                setOnTickAction { time ->
-                    Log.d("TIMER", "${time / 1000}")
-                    updateProgress(time)
-                    timerSeekBar.isEnabled = false
-                }
-
-                savedInstanceState?.let {
-                    if (!timerState.isUIEnabled) start()
-                }
-            }
-            startButton.isEnabled = timerState.isUIEnabled
-            startButton.setOnClickListener {
-                timer.start()
-                it.isEnabled = false
-            }
-        }
-
-
+        initTimer(timerSavedState)
     }
 
-    private fun ActivityMainBinding.updateProgress(time: Long) {
+    private fun ActivityMainBinding.updateTimerProgress(time: Long) {
         val timeInSeconds = time / 1000
         cdtValue.text = timeInSeconds.toString()
         timerProgress.progress = timeInSeconds.toInt()
@@ -75,9 +48,8 @@ class MainActivity : AppCompatActivity() {
             CDTState(
                 timer.duration,
                 timer.currentValue / 1000,
-                binding.timerSeekBar.isEnabled
+                state = timer.getState(),
             )
-        Log.d("TIMER-ON-SAVE_INSTANCE_STATE", timerState.toString())
         outState.putParcelable(KEY_STATE, timerState)
     }
 
@@ -88,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                 valueTo = MAX_CDT_VALUE
                 stepSize = CDT_STEP_SIZE
                 value = (timerState.duration.toMillis() / 1000).toFloat()
-                isEnabled = timerState.isUIEnabled
+                isEnabled = timerState.state == CountDownTimer.State.STOPPED
 
                 addOnChangeListener { _, value, _ ->
                     timerProgress.max = value.toInt()
@@ -97,7 +69,6 @@ class MainActivity : AppCompatActivity() {
                     timer.resetTo(Duration.ofSeconds(value.toLong()))
                 }
             }
-            Log.d("TIMER_INIT_UI", timerState.toString())
             timerProgress.apply {
                 max = timerState.duration.toMillis().toInt() / 1000
                 progress = timerState.currentValue.toInt()
@@ -105,22 +76,52 @@ class MainActivity : AppCompatActivity() {
 
             cdtValue.text = timerState.currentValue.toString()
 
-//            timer.apply {
-//                setDuration(Duration.ofSeconds(timerProgress.max.toLong()))
-//                setOnFinishAction {
-//                    timerSeekBar.isEnabled = true
-//                }
-//            }
-//
-//            startButton.setOnClickListener {
-//                timer.start {
-//                    Log.d("TIMER", "${it / 1000}")
-//                    cdtValue.text = (it / 1000).toString()
-//                    timerProgress.progress = (it / 1000).toInt()
-//                    timerSeekBar.isEnabled = false
-//                }
-//            }
+            when (timerState.state) {
+                CountDownTimer.State.STOPPED, CountDownTimer.State.PAUSED -> {
+                    startButton.visibility = VISIBLE
+                    pauseButton.visibility = GONE
+                }
+
+                CountDownTimer.State.RUNNING -> {
+                    startButton.visibility = GONE
+                    pauseButton.visibility = VISIBLE
+                }
+            }
+
         }
+    }
+
+    private fun initTimer(timerState: CDTState) {
+        with(binding) {
+            timer.apply {
+                duration = timerState.duration
+                currentValue = timerState.currentValue * 1000
+                setOnFinishAction {
+                    timer.resetTo(timerState.duration)
+                    updateTimerProgress(timer.currentValue)
+                    timerSeekBar.isEnabled = true
+                    startButton.visibility = VISIBLE
+                    pauseButton.visibility = GONE
+                }
+
+                setOnTickAction { time ->
+                    updateTimerProgress(time)
+                    timerSeekBar.isEnabled = false
+                }
+
+                startButton.setOnClickListener {
+                    timer.start()
+                    it.visibility = GONE
+                    pauseButton.visibility = VISIBLE
+                }
+                pauseButton.setOnClickListener {
+                    timer.stop()
+                    it.visibility = GONE
+                    startButton.visibility = VISIBLE
+                }
+            }
+        }
+        if (timerState.state == CountDownTimer.State.RUNNING) timer.start()
     }
 
     override fun onDestroy() {

@@ -8,14 +8,14 @@ import java.time.Duration
 data class CDTState(
     val duration: Duration,
     val currentValue: Long,
-    val isUIEnabled: Boolean,
+    val state: CountDownTimer.State,
 ) :
     Parcelable {
     companion object {
         val DEFAULT = CDTState(
             Duration.ofSeconds(MainActivity.MIN_CDT_VALUE.toLong()),
             MainActivity.MIN_CDT_VALUE.toLong(),
-            isUIEnabled = true,
+            state = CountDownTimer.State.STOPPED,
         )
     }
 }

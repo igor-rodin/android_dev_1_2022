@@ -81,4 +81,35 @@
         app:layout_constraintBottom_toBottomOf="parent"
          />
 
+    <ImageButton
+        android:id="@+id/pause_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_small"
+        android:clickable="true"
+        android:visibility="gone"
+        tools:visibility="gone"
+        android:src="@drawable/pause"
+        android:background="@drawable/shape_image_btn"
+        app:layout_constraintStart_toStartOf="@id/button_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:contentDescription="@string/pause_btn_content_description" />
+
+    <Button
+        android:id="@+id/cancel_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_middle"
+        style="@style/CDT.ButtonStyle"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_marginBottom="@dimen/margin_big"
+        android:text="@string/cancel_btn_caption"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_content"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

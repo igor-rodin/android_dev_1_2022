@@ -69,9 +69,42 @@
         android:layout_marginHorizontal="@dimen/margin_big"
         android:layout_marginTop="@dimen/margin_middle"
         style="@style/CDT.ButtonStyle"
+        tools:enabled="false"
+        tools:visibility="gone"
         android:text="@string/start_btn_caption"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/timer_seek_bar" />
+
+    <ImageButton
+        android:id="@+id/pause_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_big"
+        android:layout_marginTop="@dimen/margin_middle"
+        android:clickable="true"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:src="@drawable/pause"
+        android:background="@drawable/shape_image_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/timer_seek_bar"
+        android:contentDescription="@string/pause_btn_content_description" />
+
+    <Button
+        android:id="@+id/cancel_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_big"
+        android:layout_marginTop="@dimen/margin_middle"
+        style="@style/CDT.ButtonStyle"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_marginBottom="@dimen/margin_middle"
+        android:text="@string/cancel_btn_caption"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

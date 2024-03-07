@@ -18,11 +18,11 @@
 
     <style name="CDT.ButtonStyle" parent="Widget.Material3.Button.OutlinedButton">
         <item name="android:textAllCaps">true</item>
-        <item name="strokeWidth">4dp</item>
-        <item name="strokeColor">?android:attr/colorPrimary</item>
+        <item name="strokeWidth">@dimen/btn_stroke_width</item>
+        <item name="strokeColor">@color/cdt_btn_color_selector</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="cornerRadius">4dp</item>
-        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="cornerRadius">@dimen/btn_stroke_width</item>
+        <item name="android:textColor">@color/cdt_btn_color_selector</item>
     </style>
 </resources>

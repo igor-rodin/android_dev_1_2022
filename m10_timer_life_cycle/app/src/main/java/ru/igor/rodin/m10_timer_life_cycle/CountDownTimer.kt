@@ -22,13 +22,14 @@ class CountDownTimer(
     var duration: Duration = Duration.ofSeconds(60),
     private val tickInterval: Duration = Duration.ofSeconds(1),
 ) {
-
-    var currentValue: Long = duration.toMillis()
+    private var state: State = State.STOPPED
     private val scope = CoroutineScope(Dispatchers.Main)
     private var job: Job? = null
     private var onFinishAction: OnFinishAction? = null
     private var onTickAction: OnTickAction? = null
+    var currentValue: Long = duration.toMillis()
 
+    fun getState() = state
     fun setOnFinishAction(onStopAction: OnFinishAction) {
         this.onFinishAction = onStopAction
     }
@@ -37,10 +38,15 @@ class CountDownTimer(
         this.onTickAction = onTickAction
     }
     fun start() {
+        state = when (state) {
+            State.STOPPED -> State.RUNNING
+            State.RUNNING -> State.PAUSED
+            else -> State.RUNNING
+        }
+
         job = scope.launch() {
             while (isActive) {
                 if (currentValue < 0) {
-                    resetTo(duration)
                     job?.cancel()
                     onFinishAction?.invoke()
                     return@launch
@@ -54,11 +60,17 @@ class CountDownTimer(
     }
 
     fun stop() {
+        state = State.PAUSED
         job?.cancel()
     }
 
     fun resetTo(duration: Duration) {
+        state = State.STOPPED
         this.duration = duration
         currentValue = duration.toMillis()
+    }
+
+    enum class State {
+        RUNNING, PAUSED, STOPPED
     }
 }

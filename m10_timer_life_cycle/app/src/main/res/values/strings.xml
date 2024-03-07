@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">m10_timer_life_cycle</string>
+    <string name="app_name" translatable="false">CountDown Timer</string>
     <string name="title">Countdown Timer</string>
     <string name="start_btn_caption">Start</string>
+    <string name="pause_btn_content_description">pause_timer</string>
+    <string name="cancel_btn_caption">Reset</string>
 </resources>
