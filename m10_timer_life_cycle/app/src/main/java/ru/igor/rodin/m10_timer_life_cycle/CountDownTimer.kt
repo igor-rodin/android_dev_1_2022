@@ -1,12 +1,15 @@
 package ru.igor.rodin.m10_timer_life_cycle
 
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import java.time.Duration
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.isActive
+
+private const val DEFAULT_DURATION_SEC = 60L
+private const val DEFAULT_TICK_INTERVAL_SEC = 1L
 
 typealias OnFinishAction = () -> Unit
 typealias OnTickAction = (Long) -> Unit
@@ -16,15 +19,12 @@ typealias OnTickAction = (Long) -> Unit
  *  [duration] - duration of timer
  *  [tickInterval] - interval between ticks
  */
-
-private const val DEFAULT_DURATION_SEC = 60L
-private const val DEFAULT_TICK_INTERVAL_SEC = 1L
 class CountDownTimer(
     var duration: Duration = Duration.ofSeconds(DEFAULT_DURATION_SEC),
     private var tickInterval: Duration = Duration.ofSeconds(DEFAULT_TICK_INTERVAL_SEC),
 ) {
     private val scope = CoroutineScope(Dispatchers.Main)
-    private  var timerJob: Job? = null
+    private var timerJob: Job? = null
     private var onFinishAction: OnFinishAction? = null
     private var onTickAction: OnTickAction? = null
     private var state: State = State.STOPPED
@@ -33,12 +33,13 @@ class CountDownTimer(
 
     fun getTickInterval() = tickInterval
     fun setTickInterval(tickInterval: Duration) {
-        if(tickInterval.toMillis() <= 0 || tickInterval.toMillis() > duration.toMillis()) {
+        if (tickInterval.toMillis() <= 0 || tickInterval.toMillis() > duration.toMillis()) {
             this.tickInterval = Duration.ofSeconds(DEFAULT_TICK_INTERVAL_SEC)
-        } else  {
+        } else {
             this.tickInterval = tickInterval
         }
     }
+
     fun getState() = state
     fun setState(state: State) {
         this.state = state

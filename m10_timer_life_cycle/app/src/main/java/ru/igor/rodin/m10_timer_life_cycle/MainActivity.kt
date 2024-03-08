@@ -31,9 +31,10 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val timerSavedState = savedInstanceState?.getParcelable(KEY_STATE) ?: CDTState.DEFAULT
-        initUI(timerSavedState)
-        initTimer(timerSavedState)
+        (savedInstanceState?.getParcelable(KEY_STATE) ?: CDTState.DEFAULT).apply {
+            initUI(this)
+            initTimer(this)
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -50,26 +51,26 @@ class MainActivity : AppCompatActivity() {
     /**
      * Initialize UI with saved state
      */
-    private fun initUI(timerState: CDTState) = binding.apply {
+    private fun initUI(savedTimerState: CDTState) = binding.apply {
         timerSeekBar.apply {
             valueFrom = MIN_CDT_VALUE
             valueTo = MAX_CDT_VALUE
             stepSize = CDT_STEP_SIZE
-            value = (timerState.duration.toMillis() / ONE_SECOND).toFloat()
-            isEnabled = timerState.state == CountDownTimer.State.STOPPED
+            value = (savedTimerState.duration.toMillis() / ONE_SECOND).toFloat()
+            isEnabled = savedTimerState.state == CountDownTimer.State.STOPPED
 
             addOnChangeListener { _, value, _ ->
                 initTimeProgressState(value)
             }
         }
         timerProgress.apply {
-            max = timerState.duration.toMillis().toInt() / 1000
-            progress = timerState.currentValue.toInt()
+            max = savedTimerState.duration.toMillis().toInt() / ONE_SECOND
+            progress = savedTimerState.currentValue.toInt()
         }
 
-        cdtValue.text = timerState.currentValue.toString()
+        cdtValue.text = savedTimerState.currentValue.toString()
 
-        updateControlsState(timerState.state)
+        updateControlsState(savedTimerState.state)
 
         startButton.setOnClickListener {
             startOrResumeTimer()
@@ -104,7 +105,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Update buttons state depending on timer state
      */
-    private fun updateControlsState(state: CountDownTimer.State): Unit = with(binding) {
+    private fun updateControlsState(state: CountDownTimer.State) = binding.apply {
         when (state) {
             CountDownTimer.State.STOPPED -> {
                 startButton.visibility = VISIBLE
@@ -131,48 +132,48 @@ class MainActivity : AppCompatActivity() {
     /**
      * Stop timer and update UI
      */
-    private fun stopTimer() {
-        timer.stop()
-        timer.resetTo(timer.duration)
-        updateControlsState(timer.getState())
-        updateTimerProgress(timer.duration.toMillis())
+    private fun stopTimer() = timer.apply {
+        stop()
+        resetTo(duration)
+        updateControlsState(getState())
+        updateTimerProgress(duration.toMillis())
     }
 
     /**
      * Pause timer and update UI
      */
-    private fun pauseTimer() {
-        timer.stop()
-        updateControlsState(timer.getState())
+    private fun pauseTimer() = timer.apply {
+        stop()
+        updateControlsState(getState())
     }
 
     /**
      * Start or resume timer
      */
-    private fun startOrResumeTimer() {
-        timer.start()
-        updateControlsState(timer.getState())
+    private fun startOrResumeTimer() = timer.apply {
+        start()
+        updateControlsState(getState())
     }
 
     /**
      * Initialize timer with saved state
      */
-    private fun initTimer(timerState: CDTState) = timer.apply {
-        setState(timerState.state)
-        duration = timerState.duration
-        currentValue = timerState.currentValue * 1000
+    private fun initTimer(timerSavedState: CDTState) = timer.apply {
+        setState(timerSavedState.state)
+        duration = timerSavedState.duration
+        currentValue = timerSavedState.currentValue * ONE_SECOND
 
         setOnFinishAction {
-            timer.resetTo(timer.duration)
-            updateTimerProgress(timer.currentValue)
-            updateControlsState(timer.getState())
+            resetTo(duration)
+            updateTimerProgress(currentValue)
+            updateControlsState(getState())
         }
 
         setOnTickAction { time ->
             updateTimerProgress(time)
             binding.timerSeekBar.isEnabled = false
         }
-        if (timerState.state == CountDownTimer.State.RUNNING) resume()
+        if (timerSavedState.state == CountDownTimer.State.RUNNING) resume()
     }
 
     override fun onDestroy() {
