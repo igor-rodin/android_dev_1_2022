@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title">Таймер обратного отсчета</string>
+    <string name="start_btn_caption">Старт</string>
+    <string name="pause_btn_content_description">Приостановить таймер</string>
+    <string name="cancel_btn_caption">Отменить таймер</string>
+</resources>

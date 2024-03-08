@@ -5,9 +5,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.time.Duration
-import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.isActive
 
 typealias OnFinishAction = () -> Unit
@@ -18,25 +16,51 @@ typealias OnTickAction = (Long) -> Unit
  *  [duration] - duration of timer
  *  [tickInterval] - interval between ticks
  */
+
+private const val DEFAULT_DURATION_SEC = 60L
+private const val DEFAULT_TICK_INTERVAL_SEC = 1L
 class CountDownTimer(
-    var duration: Duration = Duration.ofSeconds(60),
-    private val tickInterval: Duration = Duration.ofSeconds(1),
+    var duration: Duration = Duration.ofSeconds(DEFAULT_DURATION_SEC),
+    private var tickInterval: Duration = Duration.ofSeconds(DEFAULT_TICK_INTERVAL_SEC),
 ) {
-    private var state: State = State.STOPPED
     private val scope = CoroutineScope(Dispatchers.Main)
-    private var job: Job? = null
+    private  var timerJob: Job? = null
     private var onFinishAction: OnFinishAction? = null
     private var onTickAction: OnTickAction? = null
+    private var state: State = State.STOPPED
     var currentValue: Long = duration.toMillis()
 
+
+    fun getTickInterval() = tickInterval
+    fun setTickInterval(tickInterval: Duration) {
+        if(tickInterval.toMillis() <= 0 || tickInterval.toMillis() > duration.toMillis()) {
+            this.tickInterval = Duration.ofSeconds(DEFAULT_TICK_INTERVAL_SEC)
+        } else  {
+            this.tickInterval = tickInterval
+        }
+    }
     fun getState() = state
-    fun setOnFinishAction(onStopAction: OnFinishAction) {
-        this.onFinishAction = onStopAction
+    fun setState(state: State) {
+        this.state = state
     }
 
+    /**
+     * Set listener [OnFinishAction] for timer finish
+     */
+    fun setOnFinishAction(onFinishAction: OnFinishAction) {
+        this.onFinishAction = onFinishAction
+    }
+
+    /**
+     * Set listener [OnTickAction] for timer tick action
+     */
     fun setOnTickAction(onTickAction: OnTickAction) {
         this.onTickAction = onTickAction
     }
+
+    /**
+     * Start timer
+     */
     fun start() {
         state = when (state) {
             State.STOPPED -> State.RUNNING
@@ -44,26 +68,39 @@ class CountDownTimer(
             else -> State.RUNNING
         }
 
-        job = scope.launch() {
+        timerJob = scope.launch() {
             while (isActive) {
                 if (currentValue < 0) {
-                    job?.cancel()
+                    timerJob?.cancel()
                     onFinishAction?.invoke()
                     return@launch
                 }
                 onTickAction?.invoke(currentValue)
                 currentValue -= tickInterval.toMillis()
                 delay(tickInterval.toMillis())
-
             }
         }
     }
 
+    /**
+     * Stop timer on pause
+     */
     fun stop() {
         state = State.PAUSED
-        job?.cancel()
+        timerJob?.cancel()
     }
 
+    /**
+     * Resuming timer after pause
+     */
+    fun resume() {
+        state = State.PAUSED
+        start()
+    }
+
+    /**
+     * Reset timer state to [State.STOPPED] and current timer value to [duration]
+     */
     fun resetTo(duration: Duration) {
         state = State.STOPPED
         this.duration = duration
