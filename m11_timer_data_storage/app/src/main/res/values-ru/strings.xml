@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="save_btn_title">Сохранить</string>
+    <string name="clean_btn_title">Очистиь</string>
+    <string name="enter_message_hint">Введите сообщение</string>
+</resources>

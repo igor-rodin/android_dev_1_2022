@@ -5,47 +5,55 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="64dp"
+    android:padding="@dimen/margin_big"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.AppCompatEditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:hint="@string/enter_message_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text"
+            android:textSize="@dimen/base_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_save"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_middle"
         android:text="@string/save_btn_title"
-        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="@id/input_text"
         app:layout_constraintStart_toStartOf="@id/input_text"
-        app:layout_constraintTop_toBottomOf="@id/input_text"/>
+        app:layout_constraintTop_toBottomOf="@id/input_text" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_clean"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
         android:text="@string/clean_btn_title"
-        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="@id/btn_save"
         app:layout_constraintStart_toStartOf="@id/btn_save"
-        app:layout_constraintTop_toBottomOf="@id/btn_save"/>
+        app:layout_constraintTop_toBottomOf="@id/btn_save" />
 
     <TextView
         android:id="@+id/message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/margin_middle"
         android:gravity="center"
-        android:textSize="18sp"
-        tools:text="@tools:sample/lorem"
+        android:textSize="@dimen/base_text_size"
         app:layout_constraintEnd_toEndOf="@id/btn_clean"
         app:layout_constraintStart_toStartOf="@id/btn_clean"
-        app:layout_constraintTop_toBottomOf="@id/btn_clean" />
+        app:layout_constraintTop_toBottomOf="@id/btn_clean"
+        tools:text="@tools:sample/lorem" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">data_storage</string>
+    <string name="app_name" translatable="false">data_storage</string>
+    <string name="shared_pref_file" translatable="false">ru.igor.rodin.m11_timer_data_storage.SHARED_PREF_FILE</string>
     <string name="save_btn_title">Save</string>
     <string name="clean_btn_title">Clean</string>
-    <string name="shared_pref_file">ru.igor.rodin.m11_timer_data_storage.SHARED_PREF_FILE</string>
+    <string name="enter_message_hint">Enter message</string>
 </resources>

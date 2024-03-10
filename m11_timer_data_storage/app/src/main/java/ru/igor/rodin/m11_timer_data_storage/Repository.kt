@@ -7,27 +7,21 @@ import android.util.Log
 class Repository(private val context: Context) {
     private var data: String? = null
     private fun getDataFromSharedPreferences(): String? {
-        val sharedPrefData: String?
         val sharedPref = context.getSharedPreferences(
             context.getString(R.string.shared_pref_file),
             MODE_PRIVATE
-        ) ?: return null
-        sharedPrefData = sharedPref.getString(context.getString(R.string.shared_pref_file), null)
-        Log.d("REPOSITORY", "$sharedPrefData from sharedPreferences")
-        return sharedPrefData
+        )
+        return sharedPref.getString(context.getString(R.string.shared_pref_file), null)
     }
 
-    private fun getDataFromLocalVariables(): String? {
-        Log.d("REPOSITORY", "$data from local")
-        return data
-    }
+    private fun getDataFromLocalVariables(): String? = data
 
     fun saveText(text: String) {
         data = text
         val sharedPref = context.getSharedPreferences(
             context.getString(R.string.shared_pref_file),
             MODE_PRIVATE
-        ) ?: return
+        )
         sharedPref.edit().apply {
             putString(context.getString(R.string.shared_pref_file), text)
             apply()
@@ -39,7 +33,7 @@ class Repository(private val context: Context) {
         val sharedPref = context.getSharedPreferences(
             context.getString(R.string.shared_pref_file),
             MODE_PRIVATE
-        ) ?: return
+        )
         sharedPref.edit().apply {
             clear()
             apply()
