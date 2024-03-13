@@ -1,78 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/fragment_container_view"
+    android:name="ru.igor.rodin.m12_mvvm.ui.SearchFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/start_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="32dp"/>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/end_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="32dp"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/search_input_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/search_query"
-        app:errorEnabled="true"
-        app:counterMinLength="3"
-        app:endIconMode="clear_text"
-        app:layout_constraintStart_toStartOf="@id/start_content"
-        app:layout_constraintEnd_toEndOf="@id/end_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.3">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/search_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/search_btn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/search_btn_caption"
-        style="@style/Widget.Material3.Button.OutlinedButton"
-        android:textAllCaps="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="32dp"
-        app:layout_constraintStart_toStartOf="@id/search_input_layout"
-        app:layout_constraintEnd_toEndOf="@id/search_input_layout"
-        app:layout_constraintTop_toBottomOf="@id/search_input_layout"/>
-
-    <TextView
-        android:id="@+id/search_result"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/search_result_text"
-        android:layout_marginTop="16dp"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/search_btn"
-        app:layout_constraintEnd_toEndOf="@id/end_content"
-        app:layout_constraintStart_toStartOf="@id/start_content" />
-
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/start_content"
-        app:layout_constraintEnd_toEndOf="@id/end_content"
-        app:layout_constraintTop_toBottomOf="@id/search_result"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:visibility="gone"
-        tools:visibility="visible"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".MainActivity" />

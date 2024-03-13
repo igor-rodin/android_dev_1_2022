@@ -1,6 +1,9 @@
 <resources>
-    <string name="app_name">Mvvm</string>
-    <string name="search_result_text">Результат запроса</string>
-    <string name="search_query">Поисковый запрос</string>
+    <string name="app_name" translatable="false">Mvvm</string>
+    <string name="search_result_text">Query result</string>
+    <string name="search_query">Search query</string>
     <string name="search_btn_caption">Search</string>
+    <string name="search_empty_result">Nothing was found for \"%1$s\"</string>
+    <string name="loading_search_hint">Searching…</string>
+    <string name="query_to_short_error_message">Search query must be at least %1$d characters long</string>
 </resources>

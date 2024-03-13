@@ -1,0 +1,8 @@
+<resources>
+    <string name="search_result_text">Результат запроса</string>
+    <string name="search_query">Поисковый запрос</string>
+    <string name="search_btn_caption">Найти</string>
+    <string name="search_empty_result">По запросу \"%1$s\" ничего не нашли</string>
+    <string name="loading_search_hint">Идет поиск…</string>
+    <string name="query_to_short_error_message">Длина поискового запроса должна быть не менее %1$d символов</string>
+</resources>
