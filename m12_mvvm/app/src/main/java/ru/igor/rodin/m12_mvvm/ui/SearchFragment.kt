@@ -37,30 +37,7 @@ class SearchFragment : Fragment() {
             viewLifecycleOwner.lifecycleScope.launch {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
                     searchViewModel.searchState.collect { state ->
-                        when (state) {
-                            SearchState.Idle -> searchResult.text =
-                                getString(R.string.search_result_text)
-
-                            SearchState.Loading -> {
-                                searchInputLayout.error = null
-                                searchProgress.visibility = View.VISIBLE
-                                searchBtn.isEnabled = false
-                                searchResult.text = getString(R.string.loading_search_hint)
-                            }
-
-                            is SearchState.Success -> {
-                                searchProgress.visibility = View.GONE
-                                searchBtn.isEnabled = true
-                                searchResult.text = state.result ?: getString(
-                                    R.string.search_empty_result, state.query
-                                )
-                            }
-
-                            is SearchState.Error -> {
-                                searchInputLayout.error = state.error
-                                searchResult.text = getString(R.string.search_result_text)
-                            }
-                        }
+                        updateUI(state)
                     }
                 }
             }
@@ -70,5 +47,32 @@ class SearchFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun updateUI(state: SearchState) = binding.apply {
+        when (state) {
+            SearchState.Idle -> searchResult.text =
+                getString(R.string.search_result_text)
+
+            SearchState.Loading -> {
+                searchInputLayout.error = null
+                searchProgress.visibility = View.VISIBLE
+                searchBtn.isEnabled = false
+                searchResult.text = getString(R.string.loading_search_hint)
+            }
+
+            is SearchState.Success -> {
+                searchProgress.visibility = View.GONE
+                searchBtn.isEnabled = true
+                searchResult.text = state.result ?: getString(
+                    R.string.search_empty_result, state.query
+                )
+            }
+
+            is SearchState.Error -> {
+                searchInputLayout.error = state.error
+                searchResult.text = getString(R.string.search_result_text)
+            }
+        }
     }
 }

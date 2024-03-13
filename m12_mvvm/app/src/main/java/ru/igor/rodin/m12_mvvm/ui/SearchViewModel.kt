@@ -11,14 +11,14 @@ import ru.igor.rodin.m12_mvvm.SearchApp
 import ru.igor.rodin.m12_mvvm.SearchEngine
 import ru.igor.rodin.m12_mvvm.StringResourceHelper
 
+private const val QUERY_MIN_LENGTH = 3
+
 sealed class SearchState {
     object Idle : SearchState()
     object Loading : SearchState()
     data class Success(val query: String, val result: String?) : SearchState()
     data class Error(val error: String) : SearchState()
 }
-
-private const val QUERY_MIN_LENGTH = 3
 
 class SearchViewModel(
     private val searchEngine: SearchEngine,
