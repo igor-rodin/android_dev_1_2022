@@ -47,7 +47,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation("androidx.fragment:fragment-ktx:1.6.2")
+    implementation(libs.androidx.fragment.ktx)
     implementation(libs.kotlinx.coroutines.android)
     implementation( libs.androidx.activity.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
