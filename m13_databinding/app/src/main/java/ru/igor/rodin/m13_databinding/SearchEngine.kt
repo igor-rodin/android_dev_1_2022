@@ -1,6 +1,5 @@
 package ru.igor.rodin.m13_databinding
 
-import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext

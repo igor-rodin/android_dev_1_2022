@@ -20,7 +20,6 @@ private const val QUERY_MIN_LENGTH = 3
 private const val SEARCH_DELAY = 500L
 
 
-data class SearchInput(var query: String = "")
 sealed class SearchState(open val error: String? = null, open val infoStatus: String? = null) {
     data class Idle(override val infoStatus: String?) : SearchState(infoStatus = infoStatus)
     data class Loading(override val infoStatus: String?) : SearchState(infoStatus = infoStatus)
@@ -34,31 +33,27 @@ sealed class SearchState(open val error: String? = null, open val infoStatus: St
         SearchState(error = error, infoStatus = infoStatus)
 }
 
+@OptIn(FlowPreview::class)
 class SearchViewModel(
     private val searchEngine: SearchEngine,
     private val stringResourceHelper: StringResourceHelper
 ) : ViewModel() {
 
-    private var _searchInput = MutableStateFlow(SearchInput())
-    val searchInput get() = _searchInput.asStateFlow()
+    var _searchInput = MutableStateFlow("")
+    private val searchInput get() = _searchInput.asStateFlow()
 
     private val _searchState: MutableStateFlow<SearchState> =
         MutableStateFlow(SearchState.Idle(stringResourceHelper.getString(R.string.search_result_text)))
     val searchState get() = _searchState.asStateFlow()
 
-    private var searchJob: Job? = null
-
-    private var inputJob: Job? = null
-    @OptIn(FlowPreview::class)
-    fun onTextChanged() {
-        inputJob?.cancel()
-        inputJob = searchInput
+    init {
+        searchInput
             .debounce(SEARCH_DELAY)
-            .onEach {
-                onSearch(it.query)
-            }
+            .onEach { onSearch(it) }
             .launchIn(viewModelScope)
     }
+
+    private var searchJob: Job? = null
 
     private fun onSearch(query: String) {
         if (searchJob?.isCompleted == false) {
@@ -68,7 +63,7 @@ class SearchViewModel(
     }
 
     private fun doSearch(query: String) {
-        searchJob = viewModelScope.launch {
+        searchJob = viewModelScope.launch() {
             if (isQueryValid(query)) {
                 _searchState.value =
                     SearchState.Loading(stringResourceHelper.getString(R.string.loading_search_hint))
