@@ -6,4 +6,5 @@
     <string name="search_empty_result">Nothing was found for \"%1$s\"</string>
     <string name="loading_search_hint">Searching…</string>
     <string name="query_to_short_error_message">Search query must be at least %1$d characters long</string>
+    <string name="canceled_search_hint">Query for \"%1$s\" canceled</string>
 </resources>

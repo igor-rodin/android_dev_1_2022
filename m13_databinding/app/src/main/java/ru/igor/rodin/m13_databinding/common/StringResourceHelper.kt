@@ -1,4 +1,4 @@
-package ru.igor.rodin.m13_databinding
+package ru.igor.rodin.m13_databinding.common
 
 import android.content.Context
 import androidx.annotation.StringRes

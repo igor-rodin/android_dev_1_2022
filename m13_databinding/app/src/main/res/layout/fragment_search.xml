@@ -4,6 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
 
+    <data>
+        <import type="ru.igor.rodin.m13_databinding.ui.SearchState"/>
+        <import type="android.view.View"/>
+        <variable
+            name="searchViewModel"
+            type="ru.igor.rodin.m13_databinding.ui.SearchViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
@@ -31,6 +39,7 @@
             android:hint="@string/search_query"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
+            app:error = "@{searchViewModel.searchState.error}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/end_content"
             app:layout_constraintStart_toStartOf="@id/start_content"
@@ -40,38 +49,28 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/search_edit_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@={searchViewModel.searchInput.query}"
+                android:afterTextChanged="@{(text) -> searchViewModel.onTextChanged()}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/search_btn"
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="32dp"
-            android:layout_marginTop="@dimen/vert_margin"
-            android:text="@string/search_btn_caption"
-            android:textAllCaps="true"
-            app:layout_constraintEnd_toEndOf="@id/search_input_layout"
-            app:layout_constraintStart_toStartOf="@id/search_input_layout"
-            app:layout_constraintTop_toBottomOf="@id/search_input_layout" />
 
         <TextView
             android:id="@+id/search_result"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/vert_margin"
-            android:text="@string/search_result_text"
+            android:text="@{searchViewModel.searchState.infoStatus}"
             android:textSize="@dimen/base_text_size"
             app:layout_constraintEnd_toEndOf="@id/end_content"
             app:layout_constraintStart_toStartOf="@id/start_content"
-            app:layout_constraintTop_toBottomOf="@id/search_btn" />
+            app:layout_constraintTop_toBottomOf="@id/search_input_layout" />
 
         <ProgressBar
             android:id="@+id/search_progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
+            android:visibility="@{searchViewModel.searchState instanceof SearchState.Loading ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/end_content"
             app:layout_constraintStart_toStartOf="@id/start_content"
