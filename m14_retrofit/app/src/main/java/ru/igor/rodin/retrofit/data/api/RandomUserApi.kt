@@ -1,4 +1,4 @@
-package ru.igor.rodin.retrofit.data
+package ru.igor.rodin.retrofit.data.api
 
 import retrofit2.http.GET
 import retrofit2.http.Headers

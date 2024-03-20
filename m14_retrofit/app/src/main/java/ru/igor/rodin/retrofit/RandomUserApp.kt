@@ -5,7 +5,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import ru.igor.rodin.retrofit.data.RandomUserApi
+import ru.igor.rodin.retrofit.data.api.RandomUserApi
 
 private const val BASE_URL = "https://randomuser.me/api"
 
