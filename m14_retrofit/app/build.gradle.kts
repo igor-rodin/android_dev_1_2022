@@ -48,6 +48,9 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
+    //Cardview
+
+    implementation(libs.androidx.cardview)
 
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.activity.ktx)
@@ -66,7 +69,7 @@ dependencies {
 
     //Glide
     implementation(libs.glide)
-    annotationProcessor(libs.compiler)
+//    annotationProcessor(libs.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

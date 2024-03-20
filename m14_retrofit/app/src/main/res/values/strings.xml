@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Retrofit</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="btn_update_user_caption">Update</string>
 </resources>
