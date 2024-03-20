@@ -8,7 +8,7 @@ data class UserResponseData(@Json(name = "results") val results: List<UserData>)
 
 @JsonClass(generateAdapter = true)
 data class UserData(
-    @Json(name = "name") val name: NameData,
+    @Json(name = "name") val userName: NameData,
     @Json(name = "location") val location: LocationData,
     @Json(name = "email") val email: String,
     @Json(name = "cell") val phone: String,
