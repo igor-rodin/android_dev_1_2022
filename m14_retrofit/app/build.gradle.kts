@@ -70,10 +70,9 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
 
-    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.14.0")
+    kapt(libs.moshi.kotlin.codegen)
     //Glide
     implementation(libs.glide)
-//    annotationProcessor(libs.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

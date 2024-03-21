@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Retrofit</string>
-    <string name="btn_update_user_caption">Перезагрузить</string>
+    <string name="btn_update_user_caption">Обновить</string>
 </resources>
