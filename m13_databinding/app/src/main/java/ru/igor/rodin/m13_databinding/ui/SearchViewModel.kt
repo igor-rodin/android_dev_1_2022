@@ -2,7 +2,9 @@ package ru.igor.rodin.m13_databinding.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.CreationExtras
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,7 +14,6 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import ru.igor.rodin.m13_databinding.R
-import ru.igor.rodin.m13_databinding.SearchApp
 import ru.igor.rodin.m13_databinding.SearchEngine
 import ru.igor.rodin.m13_databinding.common.StringResourceHelper
 
@@ -67,7 +68,7 @@ class SearchViewModel(
             if (isQueryValid(query)) {
                 _searchState.value =
                     SearchState.Loading(stringResourceHelper.getString(R.string.loading_search_hint))
-                val result = searchEngine.search(query)
+                val result = searchEngine.search()
                 val infoStatus =
                     result ?: stringResourceHelper.getString(R.string.search_empty_result, query)
                 _searchState.value = SearchState.Success(query, result, infoStatus)
@@ -99,11 +100,12 @@ class SearchViewModel(
     companion object {
         val SearchFactory = object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
                 if (modelClass.isAssignableFrom(SearchViewModel::class.java)) {
+                    val app = requireNotNull(extras[APPLICATION_KEY])
                     return SearchViewModel(
                         SearchEngine(),
-                        StringResourceHelper(SearchApp.getContext())
+                        StringResourceHelper(app.applicationContext)
                     ) as T
                 }
                 throw IllegalArgumentException("Unknown ViewModel class")
