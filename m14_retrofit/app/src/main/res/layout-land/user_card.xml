@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="userViewModel"
+            type="ru.igor.rodin.retrofit.ui.RandomUserViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/corner_middle_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/vert_margin_middle">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guide_line"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.6"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/user_avatar"
+                android:layout_width="@dimen/avatar_size"
+                android:layout_height="@dimen/avatar_size"
+                android:src="@drawable/ic_user_placeholder"
+                app:layout_constraintEnd_toEndOf="@id/guide_line"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/user_full_name"
+                style="@style/TextAppearance.MaterialComponents.Headline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/vert_margin_middle"
+                android:gravity="center"
+                android:text="@{userViewModel.viewUser.fullName}"
+                app:layout_constraintEnd_toEndOf="@id/guide_line"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/user_avatar"
+                tools:text="@tools:sample/full_names" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/email_icon"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:src="@drawable/ic_user_email"
+                app:layout_constraintEnd_toStartOf="@id/user_email"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@id/guide_line"
+                app:layout_constraintBottom_toTopOf="@id/phone_icon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/user_email"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:text="@{userViewModel.viewUser.email}"
+                app:layout_constraintBottom_toBottomOf="@id/email_icon"
+                app:layout_constraintStart_toEndOf="@id/email_icon"
+                app:layout_constraintTop_toTopOf="@id/email_icon"
+                tools:text="@tools:sample/cities" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/phone_icon"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:src="@drawable/ic_user_phone"
+                app:layout_constraintEnd_toStartOf="@id/user_phone"
+                app:layout_constraintStart_toEndOf="@id/guide_line"
+                app:layout_constraintBottom_toTopOf="@id/country_icon"
+                app:layout_constraintTop_toBottomOf="@id/email_icon" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/user_phone"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:text="@{userViewModel.viewUser.phone}"
+                app:layout_constraintBottom_toBottomOf="@id/phone_icon"
+                app:layout_constraintStart_toEndOf="@id/phone_icon"
+                app:layout_constraintTop_toTopOf="@id/phone_icon"
+                tools:text="@tools:sample/us_phones" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/country_icon"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:src="@drawable/ic_user_country"
+                app:layout_constraintStart_toEndOf="@id/guide_line"
+                app:layout_constraintTop_toBottomOf="@id/phone_icon"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/user_country"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:text="@{userViewModel.viewUser.country}"
+                app:layout_constraintStart_toEndOf="@id/country_icon"
+                app:layout_constraintBottom_toBottomOf="@id/country_icon"
+                app:layout_constraintTop_toTopOf="@id/country_icon"
+                tools:text="@tools:sample/lorem" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
