@@ -7,7 +7,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import ru.igor.rodin.retrofit.data.api.RandomUserApi
 
-private const val BASE_URL = "https://randomuser.me/api"
+
+private const val BASE_URL = "https://randomuser.me/"
 
 class RandomUserApp : Application() {
 
@@ -24,10 +25,11 @@ class RandomUserApp : Application() {
         val httpClient = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor).build()
 
+
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(httpClient)
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create().asLenient())
             .build()
 
         randomUserApi = retrofit.create(RandomUserApi::class.java)

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="icon_size">16dp</dimen>
+    <dimen name="avatar_size">100dp</dimen>
+    <dimen name="vert_margin_middle">16dp</dimen>
+    <dimen name="hor_margin_big">32dp</dimen>
+    <dimen name="corner_middle_size">8dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+</resources>

@@ -5,8 +5,8 @@ import retrofit2.http.Headers
 import retrofit2.http.Query
 
 interface RandomUserApi {
-    @Headers("Accept: application/json", "Content-Type: application/json")
+    @Headers("Content-Type: application/json")
 
-    @GET("/")
-    suspend  fun getRandomUser(@Query("results") results: Int = 1): UserResponseData
+    @GET("/api/")
+    suspend fun getRandomUser(@Query("results") results: Int = 1): UserResponseData
 }

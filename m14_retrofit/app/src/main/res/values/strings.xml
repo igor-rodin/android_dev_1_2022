@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Retrofit</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="btn_update_user_caption">Update</string>
+    <string name="app_name" translatable="false">Retrofit</string>
+    <string name="btn_update_user_caption">Reload</string>
 </resources>

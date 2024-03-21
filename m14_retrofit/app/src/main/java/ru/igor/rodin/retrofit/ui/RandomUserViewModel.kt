@@ -6,13 +6,19 @@ import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.AP
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import ru.igor.rodin.retrofit.RandomUserApp
+import ru.igor.rodin.retrofit.data.ProgressState
 import ru.igor.rodin.retrofit.data.ViewUserData
 import ru.igor.rodin.retrofit.data.api.RandomUserApi
 import ru.igor.rodin.retrofit.data.api.UserData
 
 class RandomUserViewModel(private val randomUserApi: RandomUserApi) : ViewModel() {
+
+    private val _state: MutableStateFlow<ProgressState> = MutableStateFlow(ProgressState.Success())
+    val state get() = _state.asStateFlow()
+
     private val _randomUsers: MutableStateFlow<List<UserData>> = MutableStateFlow(mutableListOf())
     val viewUser: MutableStateFlow<ViewUserData?> = MutableStateFlow(null)
 
@@ -20,20 +26,26 @@ class RandomUserViewModel(private val randomUserApi: RandomUserApi) : ViewModel(
         getRandomUser()
     }
 
-    //    val userData get() = _userData.asStateFlow()
     fun getRandomUser() {
         viewModelScope.launch {
-            val randomUsers = randomUserApi.getRandomUser().results
-            _randomUsers.value = randomUsers
-            randomUsers.first().let {
-                viewUser.value = ViewUserData(
-                    "${it.userName.lastName} ${it.userName.firstName}",
-                    it.avatar.picture,
-                    it.email,
-                    it.phone,
-                    it.location.country
-                )
+            try {
+                _state.value = ProgressState.Loading()
+                val randomUsers = randomUserApi.getRandomUser().results
+                _state.value = ProgressState.Success()
+                _randomUsers.value = randomUsers
+                randomUsers.first().let {
+                    viewUser.value = ViewUserData(
+                        "${it.userName.lastName} ${it.userName.firstName}",
+                        it.avatar.picture,
+                        it.email,
+                        it.phone,
+                        it.location.country
+                    )
+                }
+            } catch (e: Exception) {
+                _state.value = ProgressState.Error(e.message.toString())
             }
+
         }
     }
 
@@ -50,14 +62,3 @@ class RandomUserViewModel(private val randomUserApi: RandomUserApi) : ViewModel(
         }
     }
 }
-
-//class RandomUserViewModelFactory(private val randomUserApi: RandomUserApi) :
-//    ViewModelProvider.Factory {
-//    @Suppress("UNCHECKED_CAST")
-//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-//        if (modelClass.isAssignableFrom(RandomUserViewModel::class.java)) {
-//            return RandomUserViewModel(randomUserApi) as T
-//        }
-//        throw IllegalArgumentException("Unknown ViewModel class")
-//    }
-//}

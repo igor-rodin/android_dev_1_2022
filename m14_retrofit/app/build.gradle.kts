@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("kotlin-kapt")
+//    id("com.google.devtools.ksp").version("1.6.10-1.0.4")
 }
 
 android {
@@ -28,20 +29,24 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 
     buildFeatures {
-        viewBinding = true
+        dataBinding = true
     }
+
+//    kapt {
+//        generateStubs = true
+//    }
 }
 
 dependencies {
-
+    implementation(kotlin("stdlib", libs.versions.kotlin.get()))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -65,8 +70,7 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
 
-    kapt(libs.moshi.kotlin.codegen)
-
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.14.0")
     //Glide
     implementation(libs.glide)
 //    annotationProcessor(libs.compiler)
