@@ -45,7 +45,7 @@ class RandomUserFragment : Fragment() {
                     userViewModel?.viewUser?.collect {
                         Glide.with(this@RandomUserFragment).load(it?.avatarUrl)
                             .circleCrop()
-                            .into(binding.userCard.userAvatar)
+                            .into(userCard.userAvatar)
                     }
                 }
             }
