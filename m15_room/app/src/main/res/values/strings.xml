@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">WordCounter</string>
+    <string name="title">Word Counter</string>
+    <string name="add_word">Добавляемое слово</string>
+    <string name="btn_add_caption">Add word</string>
+    <string name="btn_clear_caption">Clear</string>
+    <string name="db_title">Первые пять встречающихся слов</string>
 </resources>
