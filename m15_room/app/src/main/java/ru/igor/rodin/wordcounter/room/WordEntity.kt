@@ -9,6 +9,6 @@ data class WordEntity(
     @PrimaryKey
     @ColumnInfo(name = "word")
     val word: String,
-    @ColumnInfo(name = "count", defaultValue = "1")
-    val count: Int
+    @ColumnInfo(name = "count")
+    val count: Int = 1
 )
