@@ -16,11 +16,11 @@ interface WordsDao {
 
     @Transaction
     suspend fun insertOrUpdate(word: String) {
-        val prevCont = checkWord(word)
+        val prevCont = _checkWord(word)
         if (prevCont == 0) {
-            insertWord(WordEntity(word = word))
+            _insertWord(WordEntity(word = word))
         } else {
-            updateWord(word)
+            _updateWord(word)
         }
     }
 
@@ -28,11 +28,11 @@ interface WordsDao {
     suspend fun clear()
 
     @Query("SELECT * FROM words WHERE word = :word")
-    suspend fun checkWord(word: String): Int
+    suspend fun _checkWord(word: String): Int
 
     @Insert
-    suspend fun insertWord(word: WordEntity)
+    suspend fun _insertWord(word: WordEntity)
 
     @Query("UPDATE words SET count = count + 1 WHERE word = :word")
-    suspend fun updateWord(word: String)
+    suspend fun _updateWord(word: String)
 }

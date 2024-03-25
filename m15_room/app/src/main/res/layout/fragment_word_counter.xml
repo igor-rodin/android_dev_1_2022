@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/margin_vert"
-    tools:context=".WordCounterFragment">
+    tools:context=".ui.WordCounterFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/title"
@@ -42,6 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_vert"
+        android:enabled="false"
         android:text="@string/btn_add_caption"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
