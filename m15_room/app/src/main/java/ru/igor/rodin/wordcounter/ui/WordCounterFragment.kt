@@ -58,6 +58,11 @@ class WordCounterFragment : Fragment() {
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
     private fun isValid(text: CharSequence?): Boolean {
         return text?.matches(lettersOrHyphensRegex) == true
     }
