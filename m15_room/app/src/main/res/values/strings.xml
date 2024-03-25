@@ -5,4 +5,6 @@
     <string name="btn_add_caption">Add word</string>
     <string name="btn_clear_caption">Clear</string>
     <string name="db_title">Первые пять встречающихся слов</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
