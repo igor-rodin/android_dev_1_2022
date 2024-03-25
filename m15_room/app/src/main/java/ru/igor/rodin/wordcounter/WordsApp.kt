@@ -10,8 +10,7 @@ class WordsApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        val db = Room.inMemoryDatabaseBuilder(applicationContext, WordsDb::class.java)
-            .fallbackToDestructiveMigration()
+        val db = Room.databaseBuilder(applicationContext, WordsDb::class.java, "words.db")
             .build()
         wordsDao = db.wordsDao()
     }

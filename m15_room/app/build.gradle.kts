@@ -38,6 +38,11 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
+    ksp {
+        arg("exportSchemas", "false")
+//        arg("room.schemaLocation", "$projectDir/schemas")
+    }
 }
 
 dependencies {

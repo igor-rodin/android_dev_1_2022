@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title">Счетчик слов</string>
+    <string name="add_word">Новое слово [слово, какое-то слово, какое-то другое слово]</string>
+    <string name="btn_add_caption">Добавить слово</string>
+    <string name="btn_clear_caption">Очистить</string>
+    <string name="db_title">Первые пять распространенных слов</string>
+    <string name="input_error_hint">Допускаются только буквы и дефисы</string>
+</resources>

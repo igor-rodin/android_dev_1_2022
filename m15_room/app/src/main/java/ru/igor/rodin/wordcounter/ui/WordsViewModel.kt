@@ -5,11 +5,19 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import ru.igor.rodin.wordcounter.WordsApp
 import ru.igor.rodin.wordcounter.room.WordsDao
 
 class WordsViewModel(private val wordsDao: WordsDao) : ViewModel() {
+
+    val firstMostCommon = wordsDao.getFirstMostCommon().stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = emptyList()
+    )
 
     fun insertOrUpdate(word: String) {
         viewModelScope.launch {
@@ -19,7 +27,8 @@ class WordsViewModel(private val wordsDao: WordsDao) : ViewModel() {
 
     fun clear() {
         viewModelScope.launch {
-            wordsDao.clear() }
+            wordsDao.clear()
+        }
     }
 
     companion object {

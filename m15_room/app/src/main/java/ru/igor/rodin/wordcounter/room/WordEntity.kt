@@ -11,4 +11,8 @@ data class WordEntity(
     val word: String,
     @ColumnInfo(name = "count")
     val count: Int = 1
-)
+) {
+    override fun toString(): String {
+        return "$word: $count"
+    }
+}

@@ -16,23 +16,23 @@ interface WordsDao {
 
     @Transaction
     suspend fun insertOrUpdate(word: String) {
-        val prevCont = _checkWord(word)
+        val prevCont = checkWord(word)
         if (prevCont == 0) {
-            _insertWord(WordEntity(word = word))
+            insertWord(WordEntity(word = word))
         } else {
-            _updateWord(word)
+            updateWord(word)
         }
     }
 
     @Query("DELETE FROM words")
     suspend fun clear()
 
-    @Query("SELECT * FROM words WHERE word = :word")
-    suspend fun _checkWord(word: String): Int
+    @Query("SELECT COUNT(*) FROM words WHERE word LIKE :word")
+    suspend fun checkWord(word: String): Int
 
     @Insert
-    suspend fun _insertWord(word: WordEntity)
+    suspend fun insertWord(word: WordEntity)
 
-    @Query("UPDATE words SET count = count + 1 WHERE word = :word")
-    suspend fun _updateWord(word: String)
+    @Query("UPDATE words SET count = count + 1 WHERE word LIKE :word")
+    suspend fun updateWord(word: String)
 }

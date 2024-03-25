@@ -1,10 +1,9 @@
 <resources>
-    <string name="app_name">WordCounter</string>
+    <string name="app_name" translatable="false">WordCounter</string>
     <string name="title">Word Counter</string>
-    <string name="add_word">Добавляемое слово</string>
+    <string name="add_word">New word [example: word, some-word, some-else-word]</string>
     <string name="btn_add_caption">Add word</string>
     <string name="btn_clear_caption">Clear</string>
-    <string name="db_title">Первые пять встречающихся слов</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="db_title">The first five common words</string>
+    <string name="input_error_hint">Only letters and hyphens are allowed</string>
 </resources>
